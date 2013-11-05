@@ -72,6 +72,7 @@ addLoadEvent(inputtext);
 
 
 
+
 function keyup(input)
 
 {
@@ -124,10 +125,23 @@ function upload_error(msg){
 
 $(document).ready(function() {
 
-  $("input[type=text]").keyup(function() {
+  $("input[type=text]").change(function() {
 
-    keyup(this);
+      keyup(this);
 
+    });
+  $('input[type=text]').on('input',function(){
+      keyup(this);
+  });
+
+   $("input[type=text]").each(function() {
+      var that=this;
+
+      if(this.attachEvent) {
+          this.attachEvent('onpropertychange',function(e) {
+              keyup(that);
+          });
+      }
   });
   
   init_upload();

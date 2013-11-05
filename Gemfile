@@ -11,4 +11,9 @@ gem 'bugsnag'
 gem 'rake'
 gem 'remotipart'
 gem 'bcrypt-ruby', :require => "bcrypt"
+
+group :development do
+  gem 'capistrano'
+end
+
 #gem 'exception_notification'

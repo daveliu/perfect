@@ -11,3 +11,5 @@ vendor/gems/*
 !vendor/gems/cache/
 .sass-cache/*
 db/*.db
+tmp/*
+config/deploy.rb
