@@ -1,0 +1,49 @@
+- error = @message.errors.include?(:image)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :image, :class => 'control-label'
+  div class='controls'
+    = f.text_field :image, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    span class='help-inline' = error ? f.error_message_on(:image, :class => 'text-error') : pat(:example)
+- error = @message.errors.include?(:generated_image)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :generated_image, :class => 'control-label'
+  div class='controls'
+    = f.text_field :generated_image, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:generated_image, :class => 'text-error') : pat(:example)
+- error = @message.errors.include?(:name)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :name, :class => 'control-label'
+  div class='controls'
+    = f.text_field :name, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @message.errors.include?(:content)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :content, :class => 'control-label'
+  div class='controls'
+    = f.text_field :content, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:content, :class => 'text-error') : pat(:example)
+- error = @message.errors.include?(:desc)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :desc, :class => 'control-label'
+  div class='controls'
+    = f.text_field :desc, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:desc, :class => 'text-error') : pat(:example)
+- error = @message.errors.include?(:label)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :label, :class => 'control-label'
+  div class='controls'
+    = f.text_field :label, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:label, :class => 'text-error') : pat(:example)
+- error = @message.errors.include?(:token)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :token, :class => 'control-label'
+  div class='controls'
+    = f.text_field :token, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:token, :class => 'text-error') : pat(:example)
+
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary'
+  |&nbsp;
+  = f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  |&nbsp;
+  = link_to pat(:cancel), url(:messages, :index), :class => 'btn btn-default'

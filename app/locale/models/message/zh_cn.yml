@@ -1,0 +1,15 @@
+zh_cn:
+  models:
+    message:
+      name: Message
+      attributes:
+        id: Id
+        image: "图片"
+        generated_image: "图片"
+        name: "姓名"
+        content: "内容"
+        desc: "描述"
+        created_at: Created at
+        updated_at: Updated at
+        label: "标签"
+        token: Token

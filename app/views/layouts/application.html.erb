@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>魅族</title>
+	<meta name="title" content="魅族" />
+  <meta name="keywords" content="魅族,MEIZU,魅族智能手机,魅族MX2"/>
+  <meta name="description" content="魅族研发并创造了M8、M9、MX系列智能手机；魅族官网提供最新产品资讯、专卖店信息、魅族智能手机订购、社区在线交流、海量手机应用以及完善的售后服务。"/>
+
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+	<link rel="image_src" href="/images/notify_better_image.png" />
+
+	<link rel="shortcut icon" id="favicon" href="/favicon.ico"> 
+	<script type="text/javascript" src="/javascripts/jquery.js"></script>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />        
+  <%=  stylesheet_link_tag 'application' %>
+  <%=  javascript_include_tag 'application' %>
+      
+   <%= yield_content :head %>
+ </head>
+<body>
+  <div class="wrapper">
+
+	    
+      <%= yield %>
+      	    
+    <div class="back">
+      <a class="" href="/">首页</a> &nbsp&nbsp
+      <a class="" href="http://www.meizu.cn">魅族官网</a>          
+    </div>
+
+  </div>
+  
+  <script type="text/javascript">
+  var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+  document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe3f93bc25582ebfecec8a02ba27910c2' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+
+  
+</body>
+</html>

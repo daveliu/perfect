@@ -1,0 +1,15 @@
+it:
+  models:
+    message:
+      name: Message
+      attributes:
+        id: Id
+        image: Image
+        generated_image: Generated image
+        name: Name
+        content: Content
+        desc: Desc
+        created_at: Created at
+        updated_at: Updated at
+        label: Label
+        token: Token
