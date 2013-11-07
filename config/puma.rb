@@ -3,6 +3,8 @@ pidfile "#{APP_ROOT}/tmp/puma.pid"
 state_path "#{APP_ROOT}/tmp/puma.state"
 
 railsenv = 'production'
+directory APP_ROOT
+environment railsenv
 
 stdout_redirect "#{APP_ROOT}/log/puma-#{railsenv}.stdout.log", "#{APP_ROOT}/log/puma-#{railsenv}.stderr.log"
 
