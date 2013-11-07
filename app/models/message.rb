@@ -24,6 +24,23 @@ class Message < ActiveRecord::Base
     self.save
   end
   
+  def get_number_by_char(str, font = 50)
+    if str =~ /\p{Han}/   #有汉字       
+      if str =~ /^\p{Han}+$/ #纯汉字
+        20
+      else
+        40
+      end
+    else 
+      numbers = str[/\d+/] 
+      if numbers.present?
+        20 + str.size * (font / 4) - numbers.length * (font / 5)        
+      else  
+        20 + str.size * (font / 4)
+      end  
+    end
+  end
+  
   def generate_image!
     thumb_img = "#{Padrino.root}/public#{self.image.url(:thumb)}"
     content = self.content.split(" |perfect| ").join("\n")
@@ -39,13 +56,13 @@ class Message < ActiveRecord::Base
     desc_first  = desc.split("\n").first
     
     #generate content text to image
-    content.split(" ").each_with_index do |content_line, index|
+    content.split("\n").each_with_index do |content_line, index|
       system("convert -fill '#c7ebf6' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{content_image}")
-      if index == 0
-        system("composite -compose Multiply -geometry +#{500 - 20 - content_line.display_width / 2 * 50}+#{130 + index * 60} \
-                  #{content_image}  #{bg}  #{tmp_image}")      
+      if index == 0    
+        system("composite -compose Multiply -gravity northeast -geometry +30+#{130 + index * 60} \
+                  #{content_image}  #{bg}  #{tmp_image}")          
       else            
-        system("composite -compose Multiply -geometry +#{500 - 20 - content_line.display_width / 2 * 50}+#{130 + index * 60} \
+        system("composite -compose Multiply -gravity northeast -geometry +30+#{130 + index * 60} \
                   #{content_image}  #{tmp_image}  #{tmp_image}")                        
       end            
     end  
@@ -53,19 +70,19 @@ class Message < ActiveRecord::Base
     #generate label text to image  
     system("convert -fill '#c7ebf6' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{self.label}' #{label_image}")
           
-    system("composite -compose Multiply -geometry +#{500 - 20 - self.label.display_width / 2 * 50}+70 \
+    system("composite -compose Multiply  -gravity northeast -geometry +30+70 \
                 #{label_image}  #{tmp_image}  #{tmp_image}")
 
     #generate name text to image
     system("convert -fill '#c6c8cc' -pointsize 42 -font #{Padrino.root}/public/x2.ttf label:'#{self.name}' #{name_image}")
           
-    system("composite -compose Multiply -geometry +#{500 - 20 - self.name.display_width / 2 * 42}+500 \
+    system("composite -compose Multiply -gravity northeast -geometry +30+500 \
                 #{name_image}  #{tmp_image}  #{tmp_image}")
               
     #generate desc text to image              
     desc.split("\n").each_with_index do |content_line, index|
-      system("convert -fill '#48caf7' -pointsize 20 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{desc_image}")
-      system("composite -compose Multiply -geometry +#{500 - 20 - content_line.display_width / 2 * 20}+#{560 + index * 22} \
+      system("convert -fill '#20bcf8' -pointsize 18 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{desc_image}")
+      system("composite -compose Multiply -gravity northeast -geometry +30+#{555 + index * 25} \
                     #{desc_image}  #{tmp_image}  #{tmp_image}")                                
     end  
   

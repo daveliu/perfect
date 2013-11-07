@@ -26,47 +26,49 @@
   <% end %>
   
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5  col-sm-5">
       
       <!-- <form class="form-horizontal" id="createFrom" method="post" action="/welcome/create" protect_from_csrf="true" accept-charset="UTF-8" enctype="multipart/form-data"> -->
       <% form_for @message, "/welcome/create", :multipart => true, :id => "createFrom", :class => "form-horizontal" do |f| %>        
         <input value="" name="token" type="hidden">        
         <div class="blank1"></div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">我的标签</label>
-          <div class="col-lg-6">
+
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的标签</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[label]" id="input1" placeholder="偏执狂">              
             </p>
           </div>
+
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">我的不完美之一</label>
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的不完美之一</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[content][1]" id="input2" placeholder="没有文凭">
             </p>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">我的不完美之二</label>
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的不完美之二</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[content][2]" id="input3" placeholder="没有天使投资">
             </p>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">我的不完美之三</label>
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的不完美之三</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[content][3]" id="input4" placeholder="不善交际">
             </p>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">我的不完美之四</label>
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的不完美之四</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[content][4]" id="input5" placeholder="没有背景">
             </p>
@@ -74,24 +76,24 @@
         </div>
         <div class="blank2"></div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">我的名字</label>
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的名号</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[name]" id="input6" placeholder="黄章">
             </p>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">描述一</label>
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的骄傲之一</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[desc][1]" id="input7" placeholder="魅族科技的创始人">
             </p>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">描述二</label>
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的骄傲之二</label>
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="text" class="form-control" name="message[desc][2]" id="input8" placeholder="MX系列手机总设计师">
             </p>
@@ -102,16 +104,16 @@
       <!-- <form class="form-horizontal" method="post" action="/welcome/upload" protect_from_csrf="true" accept-charset="UTF-8" enctype="multipart/form-data" data-remote="true">        -->
       <% form_for @message, "/welcome/upload", :multipart => true, :id => "createFrom", :class => "form-horizontal", :remote => true do |f| %>                
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label">图片</label>      
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label">我的照片</label>      
+          <div class="col-lg-6 col-sm-6">
             <p>
               <input type="file" id="upload_input" name="image">
             </p>
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-5 control-label"></label>                
-          <div class="col-lg-6">
+          <label for="inputEmail1" class="col-lg-5 col-sm-6 control-label"></label>                
+          <div class="col-lg-6 col-sm-6">
             <button type="submit" class="btn btn-primary btn-lg" id="submit-generate">提交</button>
           </div>
         </div>
@@ -119,7 +121,7 @@
       
       
     </div>
-    <div class="col-md-7">    
+    <div class="col-md-7 col-sm-7">    
         
       <div class="img-div img-responsive" unselectable="none" onselectstart="return false;">
         <div class="pic-div">
@@ -153,8 +155,9 @@
             MX系列手机总设计师
           </div>
         </div>
+        
+        <p style="font-size: 15px;position: absolute;bottom: -35px;"><a href="/images/blank.png" target="_blank">下载制作素材</a></p>        
       </div>
-      
     </div>
   </div>
   

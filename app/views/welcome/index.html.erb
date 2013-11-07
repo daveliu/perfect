@@ -4,7 +4,8 @@
   <script>
   $(document).ready(function(){
     $(".main").onepage_scroll({
-      sectionContainer: "section"
+      sectionContainer: "section",
+      responsiveFallback: 600
     });
 
     $(".rotate").textrotator({
@@ -25,12 +26,29 @@
     <div class="container">    
       <hr  class="featurette-divider"/>    
     
-      <div class="page_container">
-        <h1>
-          不完美 <br>
-          不完美的 <span class="rotate">相机,音质,天线,屏幕</span>
+      <div class="page_container" style="">
+        <h3 style="color:#666;line-height:1.2;">
+          没有虚高的像素
+          <br/>          
+          不是16:9屏幕
+          <br/>
+          不敢说全球最快
+          不敢省成本          
+          不会作秀
+          <br/>          
+          不完美
+        </h3>
+        <h1 style="text-align:left;margin-bottom:10px;">
+          追求极致，轻易不说完美
+          <!-- 不完美的 <span class="rotate">相机,音质,天线,屏幕</span> -->
         </h1>
-        <h2>我并不完美。我没有重低音效果箱，没有EQ均衡，不能连接BASS，没有1800万像素，没有不经过服务器就返回预订结果。你如果也想呐喊，请和我一起来。</h2>
+        <h3 style="color:#999;line-height:1.3;" >5.1吋夏普定制15:9屏幕
+          <br/>
+更快智能8核处理器
+<br/>
+索尼顶级800万背照式摄像头
+<br/>
+让大屏大为好用的Flyme 3.0</h3>
       </div>
     </div>  
     <!-- <img src="/images/phones.png" alt="phones"> -->
@@ -41,9 +59,9 @@
     <div class="container">
       
       <hr  class="featurette-divider"/>
-      <div class="row">
+      <div class="row" style="">
       
-        <div class="col-md-5 col-sm-5">
+        <div class="col-md-5 col-sm-5 col-xs-5">
           <div style="margin-right:40px;">
             <div class="pic_holder" style="text-align:right;">
               <%= image_tag("perfect.png",  :class => "img-responsive", :alt => "perfect") %>
@@ -51,9 +69,9 @@
           </div>
         </div>
         
-        <div class="col-md-7 col-sm-7 page_container">
+        <div class="col-md-7 col-sm-7 col-xs-7">
           <h1>不完美体</h1>
-          <h2>精准的2048级亮度调节，让光线过渡如丝般顺滑。夏普New Mode 2技术实现真实细腻的画质，和鲜明的色彩层次。一气呵成的TOL单玻璃全贴合，令你所见的真实与美好仿佛将从屏幕跃然而出。显示宽度超越传统的5.3吋手机，你的视野从此豁然开朗。2.90mm超窄边框，再次趋近无边极限。</h2>
+          <h2>精准的2048级亮度调节，让光线过渡如丝般顺滑。夏普New Mode 2技术实现真实细腻的画质，和鲜明的色彩层次。一气呵成的TOL单玻璃全贴合，令你所见的真实与美好仿佛将从屏幕跃然而出。</h2>
           <div class="btns">
             <a class="bluebtn" href="/new">制作我的不完美体</a>
           </div>

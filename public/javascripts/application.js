@@ -93,13 +93,23 @@ function keyup(input)
 
 }
 
+var submit = false; 
+var t;
 function init_upload(){
+
+
   $("#upload_input").on('change', function(){
+    submit = false; 
+      
     var spin = '<div class="uploading-module" style="">    <p><img src="/images/indicator.gif" width="16" height="16">正在上传，请稍候...</p>  </div>';
     $(this).hide()
     $(spin).insertAfter($(this));
-    var submit = false;
+
     $(this).parents('form').submit();
+    // t = setTimeout(function(){
+    //       if(!submit){ 
+    //     upload_error('timeout');}
+    //       },3000);
     return false;
   }) 
 }
@@ -108,8 +118,10 @@ function upload_success(imgUrl, token){
   $('.pic-div img').attr('src', imgUrl).show();
   $('.uploading-module').remove();
   $('#upload_input').show();
-  init_upload();
   
+//  clearTimeout(t);  
+  init_upload();
+  submit = true; 
   $("#createFrom input[name=token]").val(token);
   return false;
 }
@@ -118,6 +130,8 @@ function upload_error(msg){
   alert(msg);
   $('.uploading-module').remove();
   $('#upload_input').show();
+  
+//  clearTimeout(t);
   init_upload();
   return false;  
 }
@@ -132,16 +146,6 @@ $(document).ready(function() {
     });
   $('input[type=text]').on('input',function(){
       keyup(this);
-  });
-
-   $("input[type=text]").each(function() {
-      var that=this;
-
-      if(this.attachEvent) {
-          this.attachEvent('onpropertychange',function(e) {
-              keyup(that);
-          });
-      }
   });
   
   init_upload();

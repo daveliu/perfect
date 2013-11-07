@@ -1,22 +1,21 @@
 <div class="container" style="padding-top:60px;">
   <div class="row">
     
-    <div class="col-md-5 left_container">
+    <div class="col-md-5  col-sm-6 col-xs-12 left_container">
       <div style="margin-right:40px;">
         <div class="pic_holder" style="text-align:right;">
           <%= image_tag(@message.generated_image.url, :class => "img-responsive") %>
         </div>
         <div style="clear:both;float:right;margin:10px;">
-          <!-- JiaThis Button BEGIN -->
-          <div class="jiathis_style_32x32">
-            <a class="jiathis_button_weixin"></a> <a class="jiathis_button_qzone"></a> <a class="jiathis_button_renren"></a> <a class="jiathis_button_tsina"></a> <a class="jiathis_button_tqq"></a> <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a> <a class="jiathis_counter_style"></a>
+          <div class="btns">
+            <a class="bluebtn" href="<%= @message.generated_image.url %>" target="_blank">下载图片</a> 
+            <a class="bluebtn" href="/new">重新制作</a> 
           </div>
-          <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8">  </script> <!-- JiaThis Button END -->
         </div>
       </div>
     </div>
     
-    <div class="col-md-7 right_container">
+    <div class="col-md-7 col-sm-6 col-xs-12 right_container">
       <h1>
         不完美体
       </h1>
@@ -24,10 +23,11 @@
         精准的2048级亮度调节，让光线过渡如丝般顺滑。夏普New Mode 2技术实现真实细腻的画质，和鲜明的色彩层次。一气呵成的TOL单玻璃全贴合，令你所见的真实与美好仿佛将从屏幕跃然而出。显示宽度超越传统的5.3吋手机，你的视野从此豁然开朗。2.90mm超窄边框，再次趋近无边极限。
       </h2>
       <div class="clear spacer10"></div>
-      <div class="btns">
-        <a class="bluebtn" href="<%= @message.generated_image.url %>" target="_blank">下载图片</a> 
-        <a class="bluebtn" href="/new">重新制作</a> 
+      <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style_32x32">
+        <a class="jiathis_button_weixin"></a> <a class="jiathis_button_qzone"></a> <a class="jiathis_button_renren"></a> <a class="jiathis_button_tsina"></a> <a class="jiathis_button_tqq"></a> <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a> <a class="jiathis_counter_style"></a>
       </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8">  </script> <!-- JiaThis Button END -->      
     </div>
         
   </div>

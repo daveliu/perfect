@@ -6,7 +6,14 @@
 
 require File.expand_path("../config/boot.rb", __FILE__)
 
+require 'logger'
+class ::Logger; alias_method :write, :<<; end
 
+if ENV['RACK_ENV'] == 'production'
+  logger = ::Logger.new("log/production.log")
+  logger.level = ::Logger::WARN
+  use Rack::CommonLogger, logger
+end
 
 
 
