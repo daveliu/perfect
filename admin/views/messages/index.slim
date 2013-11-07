@@ -2,6 +2,8 @@ ul class="nav nav-tabs"
   li class="active" = link_to tag_icon(:list, pat(:list)), url(:messages, :index)
   li = link_to tag_icon(:plus, pat(:new)), url(:messages, :new)
 
+= (will_paginate @messages, :previous_label => '前一页', :next_label => '后一页').to_s.html_safe
+
 div class="tabs-content"
   table class="table table-striped table-hover table-condensed" id="list"
     thead

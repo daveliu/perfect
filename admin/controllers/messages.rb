@@ -1,7 +1,7 @@
 Perfect::Admin.controllers :messages do
   get :index do
     @title = "Messages"
-    @messages = Message.all
+    @messages = Message.order('id DESC').page(params[:page])
     render 'messages/index'
   end
 

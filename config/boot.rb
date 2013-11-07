@@ -37,6 +37,10 @@ I18n.default_locale = :zh_cn
 Padrino.require_dependencies "#{Padrino.root}/lib/core_ext.rb"
 
 Padrino.before_load do
+  require 'will_paginate'
+  require 'will_paginate/active_record'
+  require 'will_paginate/view_helpers/sinatra'
+  include WillPaginate::Sinatra::Helpers
   I18n.locale = :zh_cn
 end
 

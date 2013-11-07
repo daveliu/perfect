@@ -6,9 +6,9 @@
         <div class="pic_holder" style="text-align:right;">
           <%= image_tag(@message.generated_image.url, :class => "img-responsive") %>
         </div>
-        <div style="clear:both;float:right;margin:10px;">
+        <div style="clear:both;float:right;margin:10px 0px;">
           <div class="btns">
-            <a class="bluebtn" href="<%= @message.generated_image.url %>" target="_blank">下载图片</a> 
+            <a class="bluebtn" href="<%= @message.generated_image.url %>" target="_blank" style="margin-right:20px;">下载图片</a> 
             <a class="bluebtn" href="/new">重新制作</a> 
           </div>
         </div>

@@ -90,6 +90,11 @@ class Message < ActiveRecord::Base
     self.generated_image = File.open(tmp_image)
     self.save
     
+    system("rm #{tmp_image}")
+    system("rm #{content_image}")
+    system("rm #{name_image}")
+    system("rm #{label_image}")
+    system("rm #{desc_image}")
   end
   
   private
@@ -98,8 +103,8 @@ class Message < ActiveRecord::Base
   end
   
   def file_size
-     if self.image.size.to_f/(1000*1000) > 2
-       errors.add(:file, "上传图片体积不能大于10MB")
+     if self.image.size.to_f/(1000*1000) > 5
+       errors.add(:file, "上传图片体积不能大于5MB")
      end
    end
    
