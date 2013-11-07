@@ -1,4 +1,4 @@
-APP_ROOT = '/Users/dave/www/perfect/current'
+APP_ROOT = '/home/dave/www/perfect/current'
 pidfile "#{APP_ROOT}/tmp/pids/puma.pid"
 state_path "#{APP_ROOT}/tmp/pids/puma.state"
 
