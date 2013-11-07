@@ -1,6 +1,6 @@
 APP_ROOT = '/home/dave/web/perfect/current'
-pidfile "#{APP_ROOT}/tmp/pids/puma.pid"
-state_path "#{APP_ROOT}/tmp/pids/puma.state"
+pidfile "#{APP_ROOT}/tmp/puma.pid"
+state_path "#{APP_ROOT}/tmp/puma.state"
 
 railsenv = 'production'
 
