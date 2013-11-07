@@ -98,7 +98,7 @@ zh_cn:
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
-      extension_white_list_error: 图片格式仅限于jpg jpeg png gif      
+      extension_white_list_error: 图片格式仅限于jpg jpeg png      
       accepted: 必须是可被接受的
       blank: 不能为空字符
       confirmation: 与确认值不匹配

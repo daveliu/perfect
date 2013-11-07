@@ -38,7 +38,7 @@ class WeixinUploader < CarrierWave::Uploader::Base
   end
   
   def extension_white_list
-    %w(jpg jpeg gif png bmp)
+    %w(jpg jpeg png bmp)
   end
   
   def filename
