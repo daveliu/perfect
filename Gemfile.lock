@@ -90,6 +90,8 @@ GEM
       rack
     rake (10.1.0)
     remotipart (1.2.1)
+    rvm-capistrano (1.5.1)
+      capistrano (~> 2.15.4)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -117,6 +119,7 @@ DEPENDENCIES
   activerecord
   bcrypt-ruby
   bugsnag
+  bundler
   capistrano
   carrierwave
   mini_magick
@@ -126,6 +129,7 @@ DEPENDENCIES
   rack (~> 1.5.2)
   rake
   remotipart
+  rvm-capistrano
   slim
   unicode-display_width
   will_paginate

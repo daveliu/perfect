@@ -13,6 +13,8 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem "rack", '~>1.5.2'
 gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
 gem 'puma'
+gem "bundler"
+gem 'rvm-capistrano'
 gem 'capistrano'
 
 

@@ -1,4 +1,4 @@
-APP_ROOT = '/Users/dave/homebrew/code/perfect'
+APP_ROOT = '/Users/dave/homebrew/code/perfect/current'
 pidfile "#{APP_ROOT}/tmp/pids/puma.pid"
 state_path "#{APP_ROOT}/tmp/pids/puma.state"
 
