@@ -46,9 +46,6 @@ header {
   position: relative;
   z-index: 10;
 }
-.main section  {
-  overflow: hidden;
-}
 
 .main section > img {
   position: absolute;

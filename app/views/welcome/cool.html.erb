@@ -1,10 +1,10 @@
 <div class="container" style="padding-top:60px;">
   <div class="row">
     
-    <div class="col-md-5  col-sm-6 col-xs-12 left_container">
+    <div class="col-xs-6 left_container">
       <div style="margin-right:40px;" class="clearfix">
         <div class="pic_holder" style="text-align:right;">
-          <%= image_tag(@message.generated_image.url, :class => "img-responsive") %>
+          <%= image_tag(@message.generated_image.url, :class => "" , :style => "width: 415px;") %>
         </div>
         <div style="clear:both;float:right;margin:10px 0px;">
           <div class="btns">
@@ -15,7 +15,7 @@
       </div>
     </div>
     
-    <div class="col-md-7 col-sm-6 col-xs-12 right_container">
+    <div class="col-xs-6 right_container">
       <h1>
         恭喜！完美完成！
       </h1>

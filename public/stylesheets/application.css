@@ -9,7 +9,8 @@ body {
 }
 
 .container{
-  max-width:970px;
+  max-width: none !important ;
+  width:970px;  
 }
 
 .featurette-divider {
@@ -283,13 +284,6 @@ text-align:center;
   text-align:left;
 }
 
-@media only screen and (max-width: 420px) { 
-  .page_container{
-    margin: 0 auto;
-    width: 400px;
-    text-align:left;
-  }   
-}  
 
 body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container{
   margin-top:0px;

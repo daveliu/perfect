@@ -26,7 +26,7 @@
   <% end %>
   
   <div class="row">
-    <div class="col-md-5  col-sm-5">
+    <div class="col-xs-5">
       
       <!-- <form class="form-horizontal" id="createFrom" method="post" action="/welcome/create" protect_from_csrf="true" accept-charset="UTF-8" enctype="multipart/form-data"> -->
       <% form_for @message, "/welcome/create", :multipart => true, :id => "createFrom", :class => "form-horizontal" do |f| %>        
@@ -117,13 +117,11 @@
             <button type="submit" class="bluebtn" id="submit-generate">提交</button>
           </div>
         </div>
-      <% end %>
-      
+      <% end %>      
       
     </div>
-    <div class="col-md-7 col-sm-7">    
-        
-      <div class="img-div img-responsive" unselectable="none" onselectstart="return false;">
+    <div class="col-xs-7">            
+      <div class="img-div " unselectable="none" onselectstart="return false;">
         <div class="pic-div">
           <img src="" style="display:none;">
         </div>
@@ -156,7 +154,7 @@
           </div>
         </div>
         
-        <p style="font-size: 15px;position: absolute;bottom: -35px;"><a href="/images/blank.png" target="_blank">下载制作素材</a></p>        
+        <p style="font-size: 15px;position:absolute; bottom: -35px;"><a href="/images/blank.png" target="_blank">下载制作素材</a></p>        
       </div>
     </div>
   </div>
