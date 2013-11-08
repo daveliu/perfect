@@ -8,9 +8,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+  font-family:"微软雅黑","Microsoft Yahei",Arial,Helvetica,sans-serif,"宋体";;
+}
+
 .container{
   max-width: none !important ;
   width:970px;  
+}
+
+a:hover{
+  text-decoration:none;
 }
 
 .featurette-divider {
@@ -203,7 +211,7 @@ body {
 
   font-weight: 100;
 
-  font-size: 18px;
+  font-size: 25px;
 
 }
 
