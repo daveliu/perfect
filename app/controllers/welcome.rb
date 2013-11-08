@@ -49,13 +49,22 @@ Perfect::App.controllers :welcome do
     end    
   end  
   
+  # get '/' do
+  #   send_file 'foo.png'
+  # end
+  
   post :upload do
     @message = Message.new(:image => params[:image])    
-    if @message.save
-      "<textarea>upload_success('#{@message.image.url(:thumb)}', '#{@message.token}');</textarea>"      
-    else
-      "<textarea>upload_error('#{@message.errors.values.first.try(:last)}');</textarea>"                  
-    end
+
+    begin
+      if @message.save
+        "<textarea>upload_success('#{@message.image.url(:thumb)}', '#{@message.token}');</textarea>"      
+      else
+        "<textarea>upload_error('#{@message.errors.values.first.try(:last)}');</textarea>"                  
+      end
+    rescue Exception => e
+      "<textarea>upload_error('上传不太完美，请再试一次');</textarea>"                        
+    end      
   
   end  
   
