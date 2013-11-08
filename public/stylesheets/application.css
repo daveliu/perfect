@@ -8,9 +8,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/*.container{
-  width:950px;
-}*/
+.container{
+  width:970px;
+}
 
 .featurette-divider {
   margin: 60px 0;
