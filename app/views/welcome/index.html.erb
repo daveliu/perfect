@@ -1,12 +1,12 @@
 <% content_for :head  do %>
   <%=  stylesheet_link_tag 'onepage' %>
-  <%=  javascript_include_tag 'onepage', 'simple-text' %>
+  <%#=  javascript_include_tag 'onepage', 'simple-text' %>
   <script>
   $(document).ready(function(){
-    $(".main").onepage_scroll({
-      sectionContainer: "section",
-      responsiveFallback: 600
-    });
+    // $(".main").onepage_scroll({
+    //   sectionContainer: "section",
+    //   responsiveFallback: 600
+    // });
 
     $(".rotate").textrotator({
       animation: "fade", // You can pick the way it animates when rotating through words. Options are dissolve (default), fade, flip, flipUp, flipCube, flipCubeUp and spin.
@@ -27,6 +27,35 @@
       <hr  class="featurette-divider"/>    
     
       <div class="page_container" style="">
+                      <%= image_tag "banner1.jpg" %>
+                      
+        <%  if false %>
+        <!-- Carousel
+        ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <%= image_tag "banner1.jpg" %>
+            </div>
+            <div class="item">
+              <%= image_tag "banner2.jpg" %>
+            </div>
+            <div class="item">
+              <%= image_tag "banner3.jpg" %>
+            </div>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div><!-- /.carousel -->
+        <% end %>
+        
+        <% if false %>
         <h3 style="color:#666;line-height:1.2;">
           没有虚高的像素
           <br/>          
@@ -49,6 +78,7 @@
 索尼顶级800万背照式摄像头
 <!-- <br/> -->
 让大屏大为好用的Flyme 3.0</h3>
+<% end %>
       </div>
     </div>  
     <!-- <img src="/images/phones.png" alt="phones"> -->
@@ -59,9 +89,9 @@
     <div class="container">
       
       <hr  class="featurette-divider"/>
-      <div class="row" style="">
+      <div class="row" style="padding-top:0px;padding-bottom:60px;">
       
-        <div class="col-md-5 col-sm-5 col-xs-5">
+        <div class="col-md-6">
           <div style="margin-right:40px;">
             <div class="pic_holder" style="text-align:right;">
               <%= image_tag("perfect.png",  :class => "img-responsive", :alt => "perfect") %>
@@ -69,15 +99,31 @@
           </div>
         </div>
         
-        <div class="col-md-7 col-sm-7 col-xs-7">
-          <h1>不完美体</h1>
-          <h2>精准的2048级亮度调节，让光线过渡如丝般顺滑。夏普New Mode 2技术实现真实细腻的画质，和鲜明的色彩层次。一气呵成的TOL单玻璃全贴合，令你所见的真实与美好仿佛将从屏幕跃然而出。</h2>
+
+                
+        <div class="col-md-6">
+          <h1>关于完美，我有话说</h1>
+          <h2>
+            也许从来就没有完美<br>
+            只有无止境的追求<br>
+            超越常规，超乎想象<br>
+            无限接近完美<br>
+            我，不完美<br>
+            但，我敢追<br>
+            追求极致，轻易不说完美<br>
+            追逐梦想，直面真正的自我<br>
+            如果你也和我一样，就大胆说出来
+          </h2>
           <div class="btns">
+            
             <a class="bluebtn" href="/new">制作我的不完美体</a>
           </div>
         </div>
       
       </div>  
+      
+      <!-- <hr  class="featurette-divider"/> -->
+            
     </div>
     
   </section>

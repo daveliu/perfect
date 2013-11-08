@@ -63,5 +63,8 @@ Perfect::App.controllers :welcome do
     @message = Message.find_by_token(params[:token])
     render '/welcome/cool'
   end  
+  get :rules, :map => 'rules' do 
+    render '/welcome/rules'
+  end  
 
 end
