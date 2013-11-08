@@ -1,6 +1,6 @@
 APP_ROOT = '/home/dave/web/perfect/current'
-pidfile "#{APP_ROOT}/tmp/puma.pid"
-state_path "#{APP_ROOT}/tmp/puma.state"
+pidfile "#{APP_ROOT}/tmp/pids/puma.pid"
+state_path "#{APP_ROOT}/tmp/pids/puma.state"
 
 railsenv = 'production'
 directory APP_ROOT
@@ -13,4 +13,4 @@ workers 4
 threads 8,32
 preload_app!
 
-bind "unix://#{APP_ROOT}/tmp/#{railsenv}.socket"
+bind "unix://#{APP_ROOT}/tmp/pids/#{railsenv}.socket"
