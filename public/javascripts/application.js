@@ -106,10 +106,6 @@ function init_upload(){
     $(spin).insertAfter($(this));
 
     $(this).parents('form').submit();
-    // t = setTimeout(function(){
-    //       if(!submit){ 
-    //     upload_error('timeout');}
-    //       },3000);
     return false;
   }) 
 }
