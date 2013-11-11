@@ -1,4 +1,5 @@
 #coding:utf-8
+require 'builder'
 class WeixinParse
   
   def self.news_msg(hash)
