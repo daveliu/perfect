@@ -1,6 +1,9 @@
 Perfect::App.controllers :welcome do
   register Padrino::Rendering  
   register Padrino::Helpers  
+  
+#  use Rack::Protection::AuthenticityToken, :except => "weixin"
+    
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -72,8 +75,48 @@ Perfect::App.controllers :welcome do
     @message = Message.find_by_token(params[:token])
     render '/welcome/cool'
   end  
+  
+  
   get :rules, :map => 'rules' do 
     render '/welcome/rules'
+  end  
+  
+  get :weixin, :map => 'weixin' do 
+    echoStr = params[:echostr]
+    signature = params[:signature]
+    timestamp = params[:timestamp]
+    nonce = params[:nonce]
+    token = "g3k1aab4"
+    tmpArr = [token, timestamp, nonce]
+    tmpArr = tmpArr.sort
+    tmpStr = tmpArr.join
+    tmpStr = Digest::SHA1.hexdigest(tmpStr)
+    if tmpStr == signature
+      echoStr
+    else
+      "error"
+    end         
+  end  
+  
+  post :weixin, :csrf_protection => false, :map => 'weixin' do 
+     content_type :xml, 'charset' => 'utf-8'
+     
+     req = Rack::Request.new(env)
+     
+     body = req.body.read.gsub("\n" , "")
+     message = MultiXml.parse(body)['xml']
+     logger.info("-------------------#{message}")
+    
+     begin
+       back_messages = WeixinParse.msg_router(message)     
+       logger.info "返回: #{back_messages}"     
+       back_messages  
+     rescue Exception => e
+       logger.info "错误: #{e}"            
+       WeixinParse.text_msg(:from_user => message['ToUserName'], :to_user =>  message['FromUserName'], 
+                          :content => "欢迎订阅，发送1开始进入不完美图片制作")        
+     end
+     
   end  
 
 end

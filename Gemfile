@@ -16,6 +16,7 @@ gem 'puma'
 gem "bundler"
 gem 'rvm-capistrano'
 gem 'capistrano'
-
+gem 'multi_xml'
+gem 'builder'
 
 #gem 'exception_notification'

@@ -20,6 +20,8 @@ module Perfect
     
     use Remotipart::Middleware
     
+
+    
     error do
       Bugsnag.notify env['sinatra.error']
       'Sorry there was a nasty error - ' + env['sinatra.error'].to_s

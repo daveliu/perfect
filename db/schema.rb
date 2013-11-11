@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 6) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.datetime "updated_at",      :null => false
     t.string   "label"
     t.string   "token"
+    t.string   "uid"
   end
 
   add_index "messages", ["token"], :name => "index_messages_on_token"

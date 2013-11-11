@@ -7,6 +7,8 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, PADRINO_ENV)
 
+BaseURL = "http://wanmei.meizu.com"
+
 ##
 # ## Enable devel logging
 #
@@ -34,6 +36,8 @@ I18n.default_locale = :zh_cn
 # Add your before (RE)load hooks here
 #
 
+
+
 Padrino.require_dependencies "#{Padrino.root}/lib/core_ext.rb"
 
 Padrino.before_load do
@@ -41,8 +45,12 @@ Padrino.before_load do
   require 'will_paginate/active_record'
   require 'will_paginate/view_helpers/sinatra'
   include WillPaginate::Sinatra::Helpers
+
+
   I18n.locale = :zh_cn
 end
+
+
 
 ##
 # Add your after (RE)load hooks here

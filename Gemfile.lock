@@ -119,10 +119,12 @@ DEPENDENCIES
   activerecord
   bcrypt-ruby
   bugsnag
+  builder
   bundler
   capistrano
   carrierwave
   mini_magick
+  multi_xml
   mysql2
   padrino
   puma

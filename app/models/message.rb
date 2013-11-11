@@ -17,11 +17,37 @@ class Message < ActiveRecord::Base
   validate :file_size 
   
   def update_from_message(message)
-    self.message  ||= "fsfsdfsd"
-    self.message +=  "| #{message.Content}" if message.Content.present?
-    self.remote_image_url = message.PicUrl if message.PicUrl.present?
+    if self.label.blank?
+      self.label =  message['Content']
+    elsif self.content.blank?
+      self.content =  message['Content'].gsub(/\s+/, " ").strip.gsub(' ', " |perfect| ")
+    elsif self.name.blank?      
+      self.name =  message['Content']      
+    elsif self.desc.blank?      
+      self.desc =  message['Content'].gsub(/\s+/, " ").strip.gsub(' ', " |perfect| ")
+    end
     
+    if message['PicUrl'].present?
+      self.remote_image_url = message['PicUrl'] 
+      self.round
+    end  
+          
     self.save
+  end
+  
+  
+  def tips
+    if self.label.blank?
+      "请输入你的标签"
+    elsif self.content.blank?
+      "请输入你觉得自己不完美的地方（用空格分隔，最多4条）"
+    elsif self.name.blank?      
+      "请输入您的姓名"
+    elsif self.desc.blank?      
+      "请输入你为自己骄傲的地方（用空格分隔，最多两条）"
+    elsif self.image.blank?      
+      "请上传一张您的照片"      
+    end
   end
   
   def get_number_by_char(str, font = 50)
@@ -109,16 +135,17 @@ class Message < ActiveRecord::Base
    end
    
    def round
-     random = SecureRandom.hex(8)      
-     begin
-       thumb_img = "#{Padrino.root}/public#{self.image.url(:thumb)}"    
-       round_image = "#{Padrino.root}/tmp/#{random}_round.png"        
-       system("convert #{thumb_img} -alpha Set -background none -vignette 0x3  #{round_image}")
-       system("mv #{round_image} #{thumb_img}")
-     rescue Exception => e
-        puts "----------------#{e}"               
+     if self.image.present?
+       random = SecureRandom.hex(8)      
+       begin
+         thumb_img = "#{Padrino.root}/public#{self.image.url(:thumb)}"    
+         round_image = "#{Padrino.root}/tmp/#{random}_round.png"        
+         system("convert #{thumb_img} -alpha Set -background none -vignette 0x3  #{round_image}")
+         system("mv #{round_image} #{thumb_img}")
+       rescue Exception => e
+          puts "----------------#{e}"               
+       end
      end
-
    end
 
 end
