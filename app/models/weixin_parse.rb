@@ -5,8 +5,8 @@ class WeixinParse
   def self.news_msg(hash)
     builder = Builder::XmlMarkup.new
     datas = builder.xml do |b|    
-      b.ToUserName(hash[:from_user])
-      b.FromUserName(hash[:to_user])
+      b.ToUserName(hash[:to_user])
+      b.FromUserName(hash[:from_user])
       b.Articles(hash[:items])
       b.ArticleCount(hash[:items].count)            
     end  
@@ -16,8 +16,8 @@ class WeixinParse
   def self.text_msg(hash)
     builder = Builder::XmlMarkup.new
     datas = builder.xml do |b|    
-      b.ToUserName(hash[:from_user])
-      b.FromUserName(hash[:to_user])
+      b.ToUserName(hash[:to_user])
+      b.FromUserName(hash[:from_user])
       b.CreateTime("#{Time.now}")
       b.Content(hash[:content])            
     end  
@@ -62,7 +62,7 @@ class WeixinParse
 
 
   def self.event_parse(msg)
-    case msg.Event
+    case msg['Event']
     when 'subscribe' # 订阅
       WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                      :content => "欢迎订阅，发送1开始进入不完美图片制作")
