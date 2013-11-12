@@ -123,6 +123,7 @@ DEPENDENCIES
   bundler
   capistrano
   carrierwave
+  mime-types (~> 1.19)
   mini_magick
   multi_xml
   mysql2

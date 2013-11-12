@@ -18,5 +18,5 @@ gem 'rvm-capistrano'
 gem 'capistrano'
 gem 'multi_xml'
 gem 'builder'
-
+gem "mime-types", "~> 1.19"
 #gem 'exception_notification'

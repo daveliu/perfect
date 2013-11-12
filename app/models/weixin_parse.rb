@@ -3,13 +3,21 @@ require 'builder'
 class WeixinParse
   
   def self.news_msg(hash)
+    puts "--------------------#{hash}"
     builder = Builder::XmlMarkup.new
     datas = builder.xml do |b|    
       b.ToUserName(hash[:to_user])
       b.FromUserName(hash[:from_user])
       b.MsgType('news')            
-      b.Articles(hash[:items])
-      b.ArticleCount(hash[:items].count)            
+      b.Articles do |item|
+        b.item do
+          item.Title("魅族活动")
+          item.Discription("#不完美的完美#我不完美，但我敢追。如果你也和我一样，来wanmei.meizu.com分享你“不完美的完美”，赢人气hot机MX3！更有日本豪华双人游！")
+          item.PicUrl(BaseURL + hash[:url])
+          item.Url(BaseURL + hash[:url])
+        end
+      end  
+      b.ArticleCount(1)            
     end  
     datas
   end
@@ -49,15 +57,15 @@ class WeixinParse
       wm.update_from_message(msg)    
       wm.generate_image!
             
-      builder =  Builder::XmlMarkup.new
-      datas = builder.item do |b|          
-        b.Title("wanmei")
-        b.Discription("wanmei")
-        b.PicUrl( BaseURL + wm.generated_image.url)
-        b.Url( BaseURL + wm.generated_image.url)
-      end
+      # builder =  Builder::XmlMarkup.new
+      # datas = builder.item do |b|          
+      #   b.Title("wanmei")
+      #   b.Discription("wanmei")
+      #   b.PicUrl( BaseURL + wm.generated_image.url)
+      #   b.Url( BaseURL + wm.generated_image.url)
+      # end
       WeixinParse.news_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                   :items => [datas])                        
+                   :url => wm.generated_image.url)                        
     # rescue Exception => e
     #   WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
     #                  :content => "图片生成结果不完美，请再试一次")       

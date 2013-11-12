@@ -107,15 +107,15 @@ Perfect::App.controllers :welcome do
      message = MultiXml.parse(body)['xml']
      logger.info("-------------------#{message}")
     
-     begin
+#     begin
        back_messages = WeixinParse.msg_router(message)     
        logger.info "返回: #{back_messages}"     
        back_messages  
-     rescue Exception => e
-       logger.info "错误: #{e}"            
-       WeixinParse.text_msg(:from_user => message['ToUserName'], :to_user =>  message['FromUserName'], 
-                          :content => "欢迎订阅，发送1开始进入不完美图片制作")        
-     end
+     # rescue Exception => e
+     #   logger.info "错误: #{e}"            
+     #   WeixinParse.text_msg(:from_user => message['ToUserName'], :to_user =>  message['FromUserName'], 
+     #                      :content => "欢迎订阅，发送1开始进入不完美图片制作")        
+   #  end
      
   end  
 

@@ -37,9 +37,9 @@ class WeixinUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [300, 300]
   end
   
-  def extension_white_list
-    %w(jpg jpeg png bmp)
-  end
+  # def extension_white_list
+  #   %w(jpg jpeg png bmp)
+  # end
   
   def filename
     # if original_filename
