@@ -7,6 +7,7 @@ class WeixinParse
     datas = builder.xml do |b|    
       b.ToUserName(hash[:to_user])
       b.FromUserName(hash[:from_user])
+      b.MsgType('news')            
       b.Articles(hash[:items])
       b.ArticleCount(hash[:items].count)            
     end  
@@ -18,6 +19,7 @@ class WeixinParse
     datas = builder.xml do |b|    
       b.ToUserName(hash[:to_user])
       b.FromUserName(hash[:from_user])
+      b.MsgType('text')      
       b.CreateTime("#{Time.now}")
       b.Content(hash[:content])            
     end  
