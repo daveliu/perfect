@@ -123,6 +123,20 @@ class Message < ActiveRecord::Base
     system("rm #{desc_image}")
   end
   
+  def round
+    if self.image.present?
+      random = SecureRandom.hex(8)      
+      begin
+        thumb_img = "#{Padrino.root}/public#{self.image.url(:thumb)}"    
+        round_image = "#{Padrino.root}/tmp/#{random}_round.png"        
+        system("convert #{thumb_img} -alpha Set -background none -vignette 0x3  #{round_image}")
+        system("mv #{round_image} #{thumb_img}")
+      rescue Exception => e
+         puts "----------------#{e}"               
+      end
+    end
+  end
+  
   private
   def generate_token
     self.token = SecureRandom.base64.tr("+/", "-_")
@@ -133,19 +147,6 @@ class Message < ActiveRecord::Base
        errors.add(:file, "上传图片体积不能大于5MB")
      end
    end
-   
-   def round
-     if self.image.present?
-       random = SecureRandom.hex(8)      
-       begin
-         thumb_img = "#{Padrino.root}/public#{self.image.url(:thumb)}"    
-         round_image = "#{Padrino.root}/tmp/#{random}_round.png"        
-         system("convert #{thumb_img} -alpha Set -background none -vignette 0x3  #{round_image}")
-         system("mv #{round_image} #{thumb_img}")
-       rescue Exception => e
-          puts "----------------#{e}"               
-       end
-     end
-   end
+  
 
 end

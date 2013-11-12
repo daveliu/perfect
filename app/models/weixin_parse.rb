@@ -39,12 +39,13 @@ class WeixinParse
   def self.image_parse(msg)
 
     wm = Message.where(:uid => msg['FromUserName'], :generated_image => nil).first
-    if wm.nil? || wm.label.nil? ||  wm.content.nil? || wm.desc.nil? || wm.name.nil?            
+    puts "----------------------#{wm}"
+    if wm.nil? || wm.label.blank? ||  wm.content.blank? || wm.desc.blank? || wm.name.blank?            
       return  WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                      :content => "欢迎订阅，发送1开始进入不完美图片制作") 
     end                      
     
-    begin
+#    begin
       wm.update_from_message(msg)    
       wm.generate_image!
             
@@ -56,10 +57,10 @@ class WeixinParse
 
       WeixinParse.news_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                    :items => [item])                        
-    rescue Exception => e
-      WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                     :content => "图片生成结果不完美，请再试一次")       
-    end                        
+    # rescue Exception => e
+    #   WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+    #                  :content => "图片生成结果不完美，请再试一次")       
+    # end                        
   end
 
 
