@@ -10,11 +10,12 @@ class Message < ActiveRecord::Base
   
   mount_uploader :image, WeixinUploader
   mount_uploader :generated_image, GeneratedUploader  
+    
   
   # validates :image, :file_mime_type => {:content_type => /image/}, 
   #                   :if => Proc.new{|message| message.image.present?},
   #                   :message => "请上传图片类型文件"
-  validate :file_size 
+  validate :file_size , :file_type
   
   def update_from_message(message)
     if self.label.blank?
@@ -38,15 +39,15 @@ class Message < ActiveRecord::Base
   
   def tips
     if self.label.blank?
-      "请输入你的标签"
+      "step1. 给自己贴个最能代表你特点的标签，如文艺青年，数码控…"
     elsif self.content.blank?
-      "请输入你觉得自己不完美的地方（用空格分隔，最多4条）"
+      "step2. 说说你可能不太完美的地方，如至今未婚，没房没车……（最多四条，注意换行哦）"
     elsif self.name.blank?      
-      "请输入您的姓名"
+      "step3. 留下你在江湖最响亮的大名，如方铭，或令狐道人…"
     elsif self.desc.blank?      
-      "请输入你为自己骄傲的地方（用空格分隔，最多两条）"
+      "step4. 亮出令你骄傲的身份，如iFanr创始人，两个孩子深爱的老爸…"
     elsif self.image.blank?      
-      "请上传一张您的照片"      
+      "step5.爆个照吧，亲"      
     end
   end
   
@@ -146,6 +147,19 @@ class Message < ActiveRecord::Base
      if self.image.size.to_f/(1000*1000) > 5
        errors.add(:file, "上传图片体积不能大于5MB")
      end
+   end
+   
+   def file_type
+     ary = ["image/png", "image/jpg", "image/jpeg"]
+     if  self.image.file.present? 
+       ary.each do |type|
+         if(MIME::Types.type_for(self.image.file.file).first.content_type =~ /#{type}/)      
+           return true
+         end      
+       end 
+
+       errors.add(:file, "图片格式仅限于jpg jpeg png")               
+     end 
    end
   
 

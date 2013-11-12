@@ -14,7 +14,7 @@ class WeixinParse
       b.Articles do |item|
         b.item do
           item.Title("魅族活动")
-          item.Discription("#不完美的完美#我不完美，但我敢追。如果你也和我一样，来wanmei.meizu.com分享你“不完美的完美”，赢人气hot机MX3！更有日本豪华双人游！")
+          item.Discription("COOL!快去晒晒你“不完美的完美”吧～分享到朋友圈，还有机会赢MX3和日本5天4夜豪华游哦！")
           item.PicUrl(BaseURL + hash[:url])
           item.Url(BaseURL + hash[:url])
         end
@@ -37,12 +37,23 @@ class WeixinParse
   
   def self.text_parse(msg)
     wm = Message.where(:uid => msg['FromUserName'], :generated_image => nil).first
-    if  wm.blank?
-      wm = Message.create(:uid => msg['FromUserName'])
+    
+    if msg['Content'] == "wm"
+      if  wm.blank?
+        wm = Message.create(:uid => msg['FromUserName'])
+      end        
+      WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+                     :content => wm.tips)
+    else                 
+      if  wm.blank?      
+        WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+                     :content => "欢迎订阅魅族手机，发送wm开始进入不完美图片制作")
+      else                         
+        wm.update_from_message(msg)      
+        WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+                       :content => wm.tips)
+      end                 
     end  
-    wm.update_from_message(msg)      
-    WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                   :content => wm.tips)
   end
 
   def self.image_parse(msg)
@@ -50,8 +61,8 @@ class WeixinParse
     wm = Message.where(:uid => msg['FromUserName'], :generated_image => nil).first
     puts "----------------------#{wm}"
     if wm.nil? || wm.label.blank? ||  wm.content.blank? || wm.desc.blank? || wm.name.blank?            
-      return  WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                     :content => "欢迎订阅，发送1开始进入不完美图片制作") 
+      return    WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+                     :content => "欢迎订阅魅族手机，发送wm开始进入不完美图片制作")
     end                      
     
 #    begin
@@ -78,7 +89,7 @@ class WeixinParse
     case msg['Event']
     when 'subscribe' # 订阅
       WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                     :content => "欢迎订阅，发送1开始进入不完美图片制作")
+                     :content => "欢迎订阅魅族手机，发送wm开始进入不完美图片制作")
     when 'unsubscribe' # 退订
       # 又少了名用户
     when 'CLICK' # 点击菜单
