@@ -49,14 +49,15 @@ class WeixinParse
       wm.update_from_message(msg)    
       wm.generate_image!
             
-      item =  Builder::XmlMarkup.new
-      item.Title("wanmei")
-      item.Discription("wanmei")
-      item.PicUrl( BaseURL + wm.generated_image.url)
-      item.Url( BaseURL + wm.generated_image.url)
-
+      builder =  Builder::XmlMarkup.new
+      datas = builder.item do |b|          
+        b.Title("wanmei")
+        b.Discription("wanmei")
+        b.PicUrl( BaseURL + wm.generated_image.url)
+        b.Url( BaseURL + wm.generated_image.url)
+      end
       WeixinParse.news_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                   :items => [item])                        
+                   :items => [datas])                        
     # rescue Exception => e
     #   WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
     #                  :content => "图片生成结果不完美，请再试一次")       
