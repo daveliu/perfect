@@ -8,7 +8,9 @@ class WeixinParse
     datas = builder.xml do |b|    
       b.ToUserName(hash[:to_user])
       b.FromUserName(hash[:from_user])
-      b.MsgType('news')            
+      b.CreateTime("#{Time.now}")      
+      b.MsgType('news')       
+      b.ArticleCount(1)                
       b.Articles do |item|
         b.item do
           item.Title("魅族活动")
@@ -16,8 +18,7 @@ class WeixinParse
           item.PicUrl(BaseURL + hash[:url])
           item.Url(BaseURL + hash[:url])
         end
-      end  
-      b.ArticleCount(1)            
+      end         
     end  
     datas
   end
