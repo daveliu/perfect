@@ -15,7 +15,7 @@ class Message < ActiveRecord::Base
   # validates :image, :file_mime_type => {:content_type => /image/}, 
   #                   :if => Proc.new{|message| message.image.present?},
   #                   :message => "请上传图片类型文件"
-  validate :file_size , :file_type
+  validate :file_size  #, :file_type
   
   def update_from_message(message)
     if self.label.blank?
@@ -41,11 +41,11 @@ class Message < ActiveRecord::Base
     if self.label.blank?
       "step1. 给自己贴个最能代表你特点的标签，如文艺青年，数码控…"
     elsif self.content.blank?
-      "step2. 说说你可能不太完美的地方，如至今未婚，没房没车……（最多四条，注意换行哦）"
+      "step2. 说说你可能不太完美的地方，如至今未婚，没房没车……（最多四条，用空格分开）"
     elsif self.name.blank?      
       "step3. 留下你在江湖最响亮的大名，如方铭，或令狐道人…"
     elsif self.desc.blank?      
-      "step4. 亮出令你骄傲的身份，如iFanr创始人，两个孩子深爱的老爸…"
+      "step4. 亮出令你骄傲的身份，如iFanr创始人，两个孩子深爱的老爸…（最多两条，用空格分开）"
     elsif self.image.blank?      
       "step5.爆个照吧，亲"      
     end
