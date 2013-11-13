@@ -116,7 +116,7 @@ class Message < ActiveRecord::Base
     system("composite -geometry -5+410 #{thumb_img}  #{tmp_image} #{tmp_image}")    
     self.generated_image = File.open(tmp_image)
     self.save
-    
+        
     system("rm #{tmp_image}")
     system("rm #{content_image}")
     system("rm #{name_image}")

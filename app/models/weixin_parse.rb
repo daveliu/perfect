@@ -68,6 +68,10 @@ class WeixinParse
 #    begin
       wm.update_from_message(msg)    
       wm.generate_image!
+      
+      generated_img = "#{Padrino.root}/public#{wm.generated_image.url}"    
+      weixin_thumb_img = "#{Padrino.root}/public#{wm.generated_image.url}".sub(".png", 'weixin.png')    
+      system("convert #{generated_img}  -gravity South  -crop 512x330+0+5   #{weixin_thumb_img}")
             
       # builder =  Builder::XmlMarkup.new
       # datas = builder.item do |b|          
@@ -77,7 +81,7 @@ class WeixinParse
       #   b.Url( BaseURL + wm.generated_image.url)
       # end
       WeixinParse.news_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                   :picurl => wm.generated_image.url, :url => "/cool_weixin/#{wm.token}")                        
+                   :picurl => wm.generated_image.url.sub(".png", 'weixin.png'), :url => "/cool_weixin/#{wm.token}")                        
     # rescue Exception => e
     #   WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
     #                  :content => "图片生成结果不完美，请再试一次")       
