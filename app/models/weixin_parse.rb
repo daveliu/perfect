@@ -15,7 +15,7 @@ class WeixinParse
         b.item do
           item.Title("魅族活动")
           item.Discription("COOL!快去晒晒你“不完美的完美”吧～分享到朋友圈，还有机会赢MX3和日本5天4夜豪华游哦！")
-          item.PicUrl(BaseURL + hash[:url])
+          item.PicUrl(BaseURL + hash[:picurl])
           item.Url(BaseURL + hash[:url])
         end
       end         
@@ -77,7 +77,7 @@ class WeixinParse
       #   b.Url( BaseURL + wm.generated_image.url)
       # end
       WeixinParse.news_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                   :url => wm.generated_image.url)                        
+                   :picurl => wm.generated_image.url, :url => "/cool_weixin/#{wm.token}")                        
     # rescue Exception => e
     #   WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
     #                  :content => "图片生成结果不完美，请再试一次")       
