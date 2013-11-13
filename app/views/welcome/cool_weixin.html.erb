@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>魅族活动</title>
+	<meta name="title" content="魅族活动" />
+  <meta name="keywords" content="魅族,MEIZU,魅族智能手机,魅族MX2"/>
+  <meta name="description" content="#不完美的完美#我不完美，但我敢追。如果你也和我一样，来wanmei.meizu.com分享你“不完美的完美”，赢人气hot机MX3！更有日本豪华双人游！"/>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />        
+	<link rel="shortcut icon" id="favicon" href="/favicon.ico"> 
+ </head>
+ <style>
+ /* Sticky footer styles
+ -------------------------------------------------- */
+
+ html,
+ body {
+   height: 100%;
+   /* The html and body elements cannot have any padding or margin. */
+ }
+
+ /* Wrapper for page content to push down footer */
+ #wrap {
+   min-height: 100%;
+   height: auto;
+   /* Negative indent footer by its height */
+   margin: 0 auto -60px;
+   /* Pad bottom by footer height */
+   padding: 0 0 60px;
+ }
+
+ /* Set the fixed height of the footer here */
+ #footer {
+   height: 60px;
+   background-color: #f5f5f5;
+ }
+
+
+ /* Custom page CSS
+ -------------------------------------------------- */
+ /* Not required for template or sticky footer method. */
+
+ .container {
+   width: auto;
+   max-width: 680px;
+   padding: 0 15px;
+ }
+ .container .credit {
+   margin: 20px 0;
+ }
+ </style>
+<body>
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1><%= @message.name %>的不完美体</h1>
+      </div>
+      <p class="lead">
+        <%= image_tag(@message.generated_image.url, :class => "img-responsive" ) %>       
+      </p>
+      <p>
+          快晒出你 <strong>#不完美的完美#</strong> 吧！<br>
+          <span class="text text-primary">更好用的大屏手机MX3天天送！更有日本豪华双人游等你赢！ </span>
+      </p>
+      
+      <dl>
+        <dt>活动时间：</dt>
+        <dd>11月9日-30日</dd>
+        <br/> 
+        <dt>奖品设置：</dt>
+        <dd>每日一名：魅族MX3手机黑白版（16G）X 23</dd>
+        <dd>完美大奖：日本5天4夜豪华双人游X 1</dd>
+        <br/>         
+        <dt>活动规则：</dt>
+        <dd>即日起至11月30日，关注微信公众平台“魅族手机”参与活动，将生成的“不完美的完美”图片分享到自己的朋友圈，即有机会参与有奖活动；</dd>
+               <br/>  <dd>11月9日-30日，我们将每天送出一台MX3给最赞的不完美体创作者，并于次日公布获奖者，用户只需在“魅族手机”公众号界面回复文字“获奖名单”，即可获取前一天的获奖者信息。</dd>
+        <dd>
+                 <br/>  11月30日，我们还将送出本次活动的极致完美梦幻大奖——5天4夜日本豪华双人游！获奖信息同样于次日公布。
+        </dd>  
+      </dl>
+      
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted credit">关注 <span class="text text-primary"> 微信公众平台“魅族手机”（微信号：meizuzone）</span>，制作属于您的不完美体</p>
+                
+    </div>
+    
+    
+    
+  </div>
+  
+  <script type="text/javascript">
+  var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+  document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe3f93bc25582ebfecec8a02ba27910c2' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+
+  
+</body>
+</html>

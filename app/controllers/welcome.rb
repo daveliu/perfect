@@ -76,6 +76,11 @@ Perfect::App.controllers :welcome do
     render '/welcome/cool'
   end  
   
+  get :cool_weixin, :map => 'cool_weixin/:token' do 
+    @message = Message.find_by_token(params[:token])
+    render '/welcome/cool_weixin', :layout => false
+  end  
+  
   
   get :rules, :map => 'rules' do 
     render '/welcome/rules'
