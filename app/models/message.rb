@@ -84,32 +84,32 @@ class Message < ActiveRecord::Base
     
     #generate content text to image
     content.split("\n").each_with_index do |content_line, index|
-      system("convert -fill '#9de4fa' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{content_image}")
+      system("convert -fill '#9de4fa' -pointsize 48 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{content_image}")
       if index == 0    
-        system("composite -compose Multiply -gravity northeast -geometry +30+#{130 + index * 60} \
+        system("composite -compose Multiply -gravity northeast -geometry +30+#{165 + index * 55} \
                   #{content_image}  #{bg}  #{tmp_image}")          
       else            
-        system("composite -compose Multiply -gravity northeast -geometry +30+#{130 + index * 60} \
+        system("composite -compose Multiply -gravity northeast -geometry +30+#{165 + index * 55} \
                   #{content_image}  #{tmp_image}  #{tmp_image}")                        
       end            
     end  
   
     #generate label text to image  
-    system("convert -fill '#9de4fa' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{self.label}' #{label_image}")
+    system("convert -fill '#9de4fa' -pointsize 48 -font #{Padrino.root}/public/x2.ttf label:'#{self.label}' #{label_image}")
           
-    system("composite -compose Multiply  -gravity northeast -geometry +30+70 \
+    system("composite -compose Multiply  -gravity northeast -geometry +30+110 \
                 #{label_image}  #{tmp_image}  #{tmp_image}")
 
     #generate name text to image
-    system("convert -fill '#c6c8cc' -pointsize 42 -font #{Padrino.root}/public/x2.ttf label:'#{self.name}' #{name_image}")
+    system("convert -fill '#c6c8cc' -pointsize 35 -font #{Padrino.root}/public/x2.ttf label:'#{self.name}' #{name_image}")
           
-    system("composite -compose Multiply -gravity northeast -geometry +30+500 \
+    system("composite -compose Multiply -gravity northeast -geometry +30+540 \
                 #{name_image}  #{tmp_image}  #{tmp_image}")
               
     #generate desc text to image              
     desc.split("\n").each_with_index do |content_line, index|
       system("convert -fill '#20bcf8' -pointsize 18 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{desc_image}")
-      system("composite -compose Multiply -gravity northeast -geometry +30+#{555 + index * 25} \
+      system("composite -compose Multiply -gravity northeast -geometry +30+#{590 + index * 20} \
                     #{desc_image}  #{tmp_image}  #{tmp_image}")                                
     end  
   

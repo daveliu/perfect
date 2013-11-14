@@ -145,22 +145,21 @@ a.rule_ap:link,a.rule_ap:hover{color:#FFFFFF;}
 }
 .p-on-img
 {
-	color:#c7ebf6;
-	color: #C7EBF6;
-	font-size: 46px;
+	color: #9de4fa;
+	font-size: 42px;
 	line-height: 50px;
 }
 .div-on-img-2
 {
 	position:absolute;
 	right: 30px;
-	top: 525px;
+	top: 530px;
 	width:100%;
 	text-align:right;
 }
 #top-line6
 {
-	font-size: 42px;
+	font-size: 35px;
 	color: #c6c8cc;
 	line-height: 50px;
 	
