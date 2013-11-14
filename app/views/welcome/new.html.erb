@@ -2,6 +2,79 @@
   <%=  javascript_include_tag 'jquery-rails', 'jquery.iframe-transport', 'remotipart' %>
 <% end %>
 
+
+<div class="myimperfect">
+     
+	<div class="contwarp_myim">
+        <div class="content_myim">
+            <div class="advert_myim"><img src="/images/imperfect.jpg" /></div>
+            <div class="maincont_myim">
+              <% form_for @message, "/welcome/create", :multipart => true, :id => "createFrom", :class => "form-horizontal" do |f| %>        
+                <input value="" name="token" type="hidden">   
+                
+                	<table>
+                    	<tr>
+                        	<th>我的标签</th>
+                        	<td>
+              <input type="text" class="form-control" name="message[label]" id="input1" placeholder="偏执狂">                                        <p>给自己贴个最能代表你特点的标签，如文艺青年，数码控...</p></td>
+                        </tr>
+                        <tr>
+                        	<th>我的不完美</th>
+                        	<td>
+                            <input type="text" class="form-control" name="message[content][1]" id="input1" placeholder="没有文凭"><br />
+                            <input type="text" class="form-control" name="message[content][2]" id="input2" placeholder="没有文凭"><br />
+                            <input type="text" class="form-control" name="message[content][3]" id="input3" placeholder="没有文凭"><br />
+                            <input type="text" class="form-control" name="message[content][4]" id="input4" placeholder="没有文凭">
+                            <p>说说你可能不太完美的地方，如至今未婚，没房没车...</p></td>
+                        </tr>
+                        <tr>
+                        	<th>我的名号</th>
+                        	<td>
+                            <input type="text" class="form-control" name="message[name]" id="input6" placeholder="黄章">
+                            <p>留下你在江湖最响亮的大名，如方铭，令狐道人...</p></td>
+                        </tr>
+                        <tr>
+                        	<th>我的骄傲</th>
+                        	<td>
+                                          <input type="text" class="form-control" name="message[desc][1]" id="input7" placeholder="魅族科技的创始人"><br />
+                                          <input type="text" class="form-control" name="message[desc][2]" id="input8" placeholder="MX系列手机总设计师">
+                            <p>亮出令你骄傲的身份，如iFanr创始人，两个孩子深爱的老爸...</p></td>
+                        </tr>
+                        <tr>
+                        	<th>我的照片</th>
+                        	<td><a class="uploadbtn"><button>选择文件</button></a></td>
+                        </tr>
+                    </table>
+                  <% end %>
+                  
+         <% form_for @message, "/welcome/upload", :multipart => true, :id => "createFrom", :class => "form-horizontal", :remote => true do |f| %>                                  
+              <table>                  
+                  <tr>
+                  	<th>我的照片</th>
+                  	<td>
+                       <input type="file" id="upload_input" name="image">
+                    </td>
+                  </tr>
+              </table>              
+              
+          <% end %>    
+            </div>
+            <div class="cr"></div>
+        </div>
+    </div>
+    
+    <div class="btnbar_myim">
+        <a class="normalbtn yellowbtn">
+          <button type="submit" class="bluebtn" id="submit-generate">提交</button>
+        </a>
+          <a class="normalbtn graybtn" href="/images/不完美活动素材.psd">素材下载</a>
+    </div>
+
+    
+
+</div>
+
+<% if false %>
 <div class="container">
   <div class="page-header">
     <h1 id="forms">
@@ -161,3 +234,4 @@
   
 
 </div>
+<% end %>

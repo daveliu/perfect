@@ -2,6 +2,10 @@
 require 'builder'
 class WeixinParse
   
+  WELCOME = "#不完美的完美#活动正在火热进行中，
+发送字母“wm”开始制作属于您的不完美体，
+还有机会赢魅族MX3和日本5天4夜豪华游哦！"
+  
   def self.news_msg(hash)
     puts "--------------------#{hash}"
     builder = Builder::XmlMarkup.new
@@ -47,7 +51,7 @@ class WeixinParse
     else                 
       if  wm.blank?      
         WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                     :content => "欢迎订阅魅族手机，发送wm开始进入不完美图片制作")
+                     :content => WELCOME)
       else                         
         wm.update_from_message(msg)      
         WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
@@ -62,7 +66,7 @@ class WeixinParse
     puts "----------------------#{wm}"
     if wm.nil? || wm.label.blank? ||  wm.content.blank? || wm.desc.blank? || wm.name.blank?            
       return    WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                     :content => "欢迎订阅魅族手机，发送wm开始进入不完美图片制作")
+                     :content => WELCOME)
     end                      
     
 #    begin
@@ -93,7 +97,11 @@ class WeixinParse
     case msg['Event']
     when 'subscribe' # 订阅
       WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                     :content => "欢迎订阅魅族手机，发送wm开始进入不完美图片制作")
+                     :content => "欢迎订阅魅族手机！
+ 
+#不完美的完美#活动正在火热进行中，
+发送字母“wm”开始制作属于您的不完美体，
+还有机会赢魅族MX3和日本5天4夜豪华游哦！")
     when 'unsubscribe' # 退订
       # 又少了名用户
     when 'CLICK' # 点击菜单
