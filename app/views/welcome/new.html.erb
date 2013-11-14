@@ -7,7 +7,44 @@
      
 	<div class="contwarp_myim">
         <div class="content_myim">
-            <div class="advert_myim"><img src="/images/imperfect.jpg" /></div>
+            <div class="advert_myim">
+              <!-- <img src="/images/blank.png" /> -->
+              <div class="img-div " unselectable="none" onselectstart="return false;">
+                <div class="pic-div">
+                  <img src="" style="display:none;">
+                </div>
+                <div class="div-on-img-1">
+                  <div class="p-on-img" id="top-line1" unselectable="none" onselectstart="return false;">
+                    偏执狂
+                  </div>
+                  <div class="p-on-img" id="top-line2" unselectable="none" onselectstart="return false;">
+                    不会写代码
+                  </div>
+                  <div class="p-on-img" id="top-line3" unselectable="none" onselectstart="return false;">
+                    没有天使投资
+                  </div>
+                  <div class="p-on-img" id="top-line4" unselectable="none" onselectstart="return false;">
+                    不善交际
+                  </div>
+                  <div class="p-on-img" id="top-line5" unselectable="none" onselectstart="return false;">
+                    没有背景
+                  </div>
+                </div>
+                <div class="div-on-img-2">
+                  <div class="p-on-img" id="top-line6" unselectable="none" onselectstart="return false;">
+                    黄章
+                  </div>
+                  <div class="p-on-img" id="top-line7" unselectable="none" onselectstart="return false;">
+                    魅族科技的创始人
+                  </div>
+                  <div class="p-on-img" id="top-line8" unselectable="none" onselectstart="return false;">
+                    MX系列手机总设计师
+                  </div>
+                </div>
+      
+              </div>
+              
+            </div>
             <div class="maincont_myim">
               <% form_for @message, "/welcome/create", :multipart => true, :id => "createFrom", :class => "form-horizontal" do |f| %>        
                 <input value="" name="token" type="hidden">   
@@ -21,10 +58,10 @@
                         <tr>
                         	<th>我的不完美</th>
                         	<td>
-                            <input type="text" class="form-control" name="message[content][1]" id="input1" placeholder="没有文凭"><br />
-                            <input type="text" class="form-control" name="message[content][2]" id="input2" placeholder="没有文凭"><br />
-                            <input type="text" class="form-control" name="message[content][3]" id="input3" placeholder="没有文凭"><br />
-                            <input type="text" class="form-control" name="message[content][4]" id="input4" placeholder="没有文凭">
+                            <input type="text" class="form-control" name="message[content][1]" id="input1" placeholder="不会写代码"><br />
+                            <input type="text" class="form-control" name="message[content][2]" id="input2" placeholder="没有天使投资"><br />
+                            <input type="text" class="form-control" name="message[content][3]" id="input3" placeholder="不善交际"><br />
+                            <input type="text" class="form-control" name="message[content][4]" id="input4" placeholder="没有背景">
                             <p>说说你可能不太完美的地方，如至今未婚，没房没车...</p></td>
                         </tr>
                         <tr>
@@ -40,10 +77,6 @@
                                           <input type="text" class="form-control" name="message[desc][2]" id="input8" placeholder="MX系列手机总设计师">
                             <p>亮出令你骄傲的身份，如iFanr创始人，两个孩子深爱的老爸...</p></td>
                         </tr>
-                        <tr>
-                        	<th>我的照片</th>
-                        	<td><a class="uploadbtn"><button>选择文件</button></a></td>
-                        </tr>
                     </table>
                   <% end %>
                   
@@ -51,8 +84,8 @@
               <table>                  
                   <tr>
                   	<th>我的照片</th>
-                  	<td>
-                       <input type="file" id="upload_input" name="image">
+                  	<td style="">
+                       <input type="file" id="upload_input" name="image" style="display:block;margin-top:15px;">
                     </td>
                   </tr>
               </table>              

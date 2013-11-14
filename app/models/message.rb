@@ -84,7 +84,7 @@ class Message < ActiveRecord::Base
     
     #generate content text to image
     content.split("\n").each_with_index do |content_line, index|
-      system("convert -fill '#c7ebf6' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{content_image}")
+      system("convert -fill '#9de4fa' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{content_line}' #{content_image}")
       if index == 0    
         system("composite -compose Multiply -gravity northeast -geometry +30+#{130 + index * 60} \
                   #{content_image}  #{bg}  #{tmp_image}")          
@@ -95,7 +95,7 @@ class Message < ActiveRecord::Base
     end  
   
     #generate label text to image  
-    system("convert -fill '#c7ebf6' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{self.label}' #{label_image}")
+    system("convert -fill '#9de4fa' -pointsize 50 -font #{Padrino.root}/public/x2.ttf label:'#{self.label}' #{label_image}")
           
     system("composite -compose Multiply  -gravity northeast -geometry +30+70 \
                 #{label_image}  #{tmp_image}  #{tmp_image}")
