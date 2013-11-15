@@ -7,8 +7,8 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, PADRINO_ENV)
 
-#BaseURL = "http://wanmei.meizu.com"
-BaseURL = "http://115.29.195.216"
+BaseURL = "http://wanmei.meizu.com"
+#BaseURL = "http://115.29.195.216"
 ##
 # ## Enable devel logging
 #
