@@ -11,8 +11,9 @@
                 <p class="rule_comp"><a href="/rules">查看获奖规则</a></p>
                 
                 <div class="clear spacer10"></div>
-                <!-- JiaThis Button BEGIN -->
-                <div class="jiathis_style_32x32">
+
+
+                <!-- <div class="jiathis_style_32x32">
                 <a class="jiathis_button_qzone"></a>
                 <a class="jiathis_button_tsina"></a>
                 <a class="jiathis_button_tqq"></a>
@@ -22,14 +23,33 @@
                 </div>
                 <script type="text/javascript" >
                 var jiathis_config={
-                	data_track_clickback:true,
-                	summary:"",
-                	shortUrl:false,
-                	hideMore:false
+                  data_track_clickback:true,
+                  summary:"",
+                  shortUrl:false,
+                  hideMore:false
                 }
                 </script>
-                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1866109" charset="utf-8"></script>
-                <!-- JiaThis Button END -->
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1866109" charset="utf-8"></script> -->
+
+
+                  <!-- Baidu Button BEGIN -->
+                  <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+                  <a class="bds_tsina"></a>
+                  <a class="bds_qzone"></a>
+                  <a class="bds_tqq"></a>
+                  <a class="bds_renren"></a>
+                  <a class="bds_tieba"></a>
+                  <span class="bds_more"></span>
+                  <a class="shareCount"></a>
+                  </div>
+                  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6866278" ></script>
+                  <script type="text/javascript" id="bdshell_js"></script>
+                  <script type="text/javascript">
+                  
+                  	var bds_config = {'bdPic':'<%= BaseURL + @message.generated_image.url %>','bdText':'魅族活动 #不完美的完美#我不完美，但我敢追。如果你也和我一样，来wanmei.meizu.com分享你“不完美的完美”，赢人气hot机MX3！更有日本豪华双人游！'};
+                  document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                  </script>
+                  <!-- Baidu Button END -->
 
             </div>
             
