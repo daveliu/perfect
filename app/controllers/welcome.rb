@@ -33,23 +33,37 @@ Perfect::App.controllers :welcome do
   end
   
   post :create do
-    @message = Message.find_by_token(params[:token])
     puts "------------------#{params[:message]}"
+    params[:message][:content]['3'] = "不善交际" if params[:message][:content]['3'].blank?
+    params[:message][:content]['4'] = "没有背景" if params[:message][:content]['4'].blank?
+     params[:message][:desc]['2'] = "魅族手机用户"    if params[:message][:desc]['2'].blank?    
     params[:message][:content] =  params[:message][:content].values.join(" |perfect| ")
     params[:message][:desc] = params[:message][:desc].values.join(" |perfect| ")    
-    if @message.update_attributes(params[:message])
-      begin
-        @message.generate_image!     
-        redirect_to "/cool/#{@message.token}"           
-      rescue Exception => e
-        puts "-----------------#{e}"  
-        flash.now[:notice] = "抱歉，生成图片的过程不太完美，请再试一次"
-        render "/welcome/new" 
-      end
-            
+    
+    if params[:token].present?
+      @message = Message.find_by_token(params[:token])
+      params[:message][:label] = "偏执狂"   if params[:message][:label].blank?
+      params[:message][:name] = "黄章" if params[:message][:name].blank?    
+      @message.update_attributes(params[:message])      
     else
-      render "/welcome/new"
+      @message = Message.new params[:message]
+      @message.label = "偏执狂"   if @message.label.blank?
+      @message.name = "黄章"   if @message.name.blank? 
+      @message.image =  File.open("#{Padrino.root}/public/images/default.png") if @message.image.blank?
+      puts "------------------------#{@message.label}"
+      @message.save      
     end    
+          
+    begin
+      @message.generate_image!     
+      redirect_to "/cool/#{@message.token}"           
+    rescue Exception => e
+      puts "-----------------#{e}"  
+      flash.now[:notice] = "抱歉，生成图片的过程不太完美，请再试一次"
+      render "/welcome/new" 
+    end
+
+    
   end  
   
   # get '/' do

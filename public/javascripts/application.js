@@ -149,9 +149,9 @@ $(document).ready(function() {
   $("#submit-generate").click(function(){
 
     var result = true;
-    $( "input[type=text]" ).each(function( index ) {
+    $( "input[require=true]" ).each(function( index ) {
       if ($(this).val() == "") {
-        alert('请填写所有输入框并上传照片')
+        alert('请填写有*标志的所有输入框')
         result = false
         return false;
       }
@@ -159,11 +159,11 @@ $(document).ready(function() {
     
     
     if (result) {
-      if (  $("#createFrom input[name=token]").val() == "") {
-        alert('请上传照片')
-        result = false
-        return false;
-      }
+      // if (  $("#createFrom input[name=token]").val() == "") {
+      //   alert('请上传照片')
+      //   result = false
+      //   return false;
+      // }
       
       $(this).attr('disabled', true)
       $("#createFrom").submit();      

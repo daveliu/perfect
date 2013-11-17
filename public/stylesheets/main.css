@@ -66,7 +66,7 @@ a.rule_ap:link,a.rule_ap:hover{color:#FFFFFF;}
 .maincont_myim td{padding-bottom:21px;}
 .maincont_myim td input[type='text']{width:271px;height:34px;padding:0px 10px;margin:8px 0px 7px 0px;background-color:#f9f9f9;border:1px solid #e6e6e6;*line-height:34px;}
 .maincont_myim td p{font-size:12px;line-height:18px;color:#C5C5C5;}
-.maincont_myim th{width:94px;padding:16px 14px 0px 0px;font-size:16px;color:#000000;text-align:right;vertical-align:top;}
+.maincont_myim th{width:94px;padding:16px 25px 0px 0px;font-size:16px;color:#000000;text-align:right;vertical-align:top;}
 .btnbar_myim{width:1152px;padding:42px 0px 54px 0px;margin:0px auto;}
 .btnbar_myim .normalbtn{float:right;margin-left:27px;}
 /*complete*/
