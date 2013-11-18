@@ -24,10 +24,12 @@ Perfect::App.controllers :welcome do
   # end
   
   get :index do
+    @body_class = "container_index"
     render '/welcome/index'
   end
   
   get :new , :map => "new" do
+    @body_class = "container_myim"    
     @message = Message.new
     render '/welcome/new'
   end
@@ -86,6 +88,8 @@ Perfect::App.controllers :welcome do
   end  
   
   get :cool, :map => 'cool/:token' do 
+    @body_class = "container_comp"            
+    
     @message = Message.find_by_token(params[:token])
     render '/welcome/cool'
   end  
@@ -97,6 +101,7 @@ Perfect::App.controllers :welcome do
   
   
   get :rules, :map => 'rules' do 
+    @body_class = "container_rule"        
     render '/welcome/rules'
   end  
   

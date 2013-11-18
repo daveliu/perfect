@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>魅族活动</title>
+<meta name="baidu-site-verification" content="e577d2f3fef7b3bdd5d68e56d4f2667a"/>
 <meta name="title" content="魅族活动" />
 <meta name="keywords" content="魅族,MEIZU,魅族智能手机,魅族MX2"/>
 <meta name="description" content="#不完美的完美#我不完美，但我敢追。如果你也和我一样，来wanmei.meizu.com分享你“不完美的完美”，赢人气hot机MX3！更有日本豪华双人游！"/>
@@ -14,11 +15,11 @@
 </head>
 
 <body>
-<div class="container_index">
+<div class="<%= @body_class || 'container_index' %>">
     <div id="header">
     	<div class="headinner_h">
         <div class="mzlogo_h"><a href="/"></a></div>
-        <div class="login_h"><a href="http://www.meizu.com">魅族官网</a><em></div>
+        <div class="login_h"><a href="http://www.meizu.com">魅族官网</a></div>
         <div class="cr"></div>
       </div>
       <div class="border_bt1"></div>
@@ -39,7 +40,7 @@
         <div id="footer2" class="copyright">
         	<span>Copyright ©2013 Meizu Telecom Equipment Co., Ltd. All rights reserved.</span>
 			<a target="_blank" href="http://res.meizu.com/resources/www/images/icp2.jpg" hidefocus="true">经营许可证编号：粤B2-20130198</a>
-        </div>
+      </div>
     </div>
 </div>
 
@@ -50,57 +51,3 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 </body>
 </html>
-  
-  
-  
-<% if false %>
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>魅族活动</title>
-	<meta name="title" content="魅族活动" />
-  <meta name="keywords" content="魅族,MEIZU,魅族智能手机,魅族MX2"/>
-  <meta name="description" content="#不完美的完美#我不完美，但我敢追。如果你也和我一样，来wanmei.meizu.com分享你“不完美的完美”，赢人气hot机MX3！更有日本豪华双人游！"/>
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
-
-	<link rel="shortcut icon" id="favicon" href="/favicon.ico"> 
-	<script type="text/javascript" src="/javascripts/jquery.js"></script>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />        
-  <%=  stylesheet_link_tag 'application' %>
-  <%=  javascript_include_tag 'application' %>
-      
-   <%= yield_content :head %>
- </head>
-<body>
-  <div class="wrapper">
-
-	    
-      <%= yield %>
-      	    
-    <div class="back">
-      <div class="container">
-        <a class="" href="/">首页</a> &nbsp&nbsp
-        <a class="" href="http://www.meizu.cn">魅族官网</a>          
-      </div>
-    </div>
-
-  </div>
-  
-  <script type="text/javascript">
-  var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-  document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe3f93bc25582ebfecec8a02ba27910c2' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  
-  <!-- // <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
-
-  
-</body>
-</html>
-<% end %>
-
-
-
-
