@@ -1,0 +1,46 @@
+<div class="activerule">
+	<div class="title_rule"></div>
+    <div class="contwarp_rule">
+        <div class="content_rule">
+            <div class="head_rulecont">即日起至11月30日，登录wanmei.meizu.com，晒出你<a> #不完美的完美#</a>，创玩你的专属不完美体。一键分享至微博或微信，<em>魅族MX3手机天天送！</em>更有极致完美梦幻大奖 —— <em>5天4夜日本豪华双人游！</em></div>
+            <div class="weibo_rule">
+            	<h3>获奖名单公布</h3>
+              <% if @cheers.blank? %>
+                <h5 style="margin-bottom:20px;padding-bottom:50px;">获奖名单还没有开始公布，敬请期待</h5>
+              <% end %>
+              <% @cheers.each do |cheer| %>
+                <div class="prizeset">
+                	<h5><%= cheer.created_at.month %>月<%= cheer.created_at.day %>日：</h5>
+                    <ul>
+                        <li>
+                        	  <div class="pic_prize"><img src="/images/prize_mx.jpg" /></div>
+                            <div class="info_prize" style="line-height:28px;">
+                              <!-- <em>微信获奖</em><br /> -->
+                              <img src="http://www.sinaimg.cn/blog/developer/wiki/LOGO_24x24.png" style="vertical-align:bottom;">  微博ID： <%= cheer.weibo_uid %>  <br/>                              
+                              获得魅族MX3手机黑白版一台(16G)<br/>
+
+                              <a href="/cool/<%= cheer.weibo_token %>">作品链接</a>
+                            </div>
+                            <div class="cr"></div>      
+                        </li>
+                        <li>
+                        	<div class="pic_prize"><img src="/images/prize_mx.jpg" /></div>
+                            <div class="info_prize" style="line-height:28px;">
+                              <!-- <em>微博获奖</em><br /> -->
+                              <img src="/images/weixin.png" style="vertical-align:bottom;width:24px;">  微信ID： <%= cheer.weixin_uid %>  <br/>                              
+                              获得魅族MX3手机黑白版一台(16G)<br/>
+
+                              <a href="http://localhost:3001/cool/<%= cheer.weixin_token %>">作品链接</a>
+                            <div class="cr"></div>
+                        </li>
+                        <li class="cr"></li>
+                    </ul>
+                </div>
+                <% end %>
+                
+                
+                <div class="cr"></div>
+            </div>            
+        </div>
+    </div>
+</div>

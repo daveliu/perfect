@@ -1,0 +1,31 @@
+- error = @cheer.errors.include?(:weixin_token)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label "微信获奖用户的token", :class => 'control-label'
+  div class='controls'
+    = f.text_field :weixin_token, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    span class='help-inline' = error ? f.error_message_on(:weixin_token, :class => 'text-error') : pat(:example)
+- error = @cheer.errors.include?(:weibo_token)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label "微博获奖用户的token", :class => 'control-label'
+  div class='controls'
+    = f.text_field :weibo_token, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:weibo_token, :class => 'text-error') : pat(:example)
+- error = @cheer.errors.include?(:weixin_uid)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label "微信获奖用户的id", :class => 'control-label'
+  div class='controls'
+    = f.text_field :weixin_uid, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:weixin_uid, :class => 'text-error') : pat(:example)
+- error = @cheer.errors.include?(:weibo_uid)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label "微博获奖用户的id", :class => 'control-label'
+  div class='controls'
+    = f.text_field :weibo_uid, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:weibo_uid, :class => 'text-error') : pat(:example)
+
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary'
+  |&nbsp;
+  = f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  |&nbsp;
+  = link_to pat(:cancel), url(:cheers, :index), :class => 'btn btn-default'

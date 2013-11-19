@@ -48,7 +48,10 @@ class WeixinParse
       end        
       WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                      :content => wm.tips)
-    else                 
+    elsif msg['Content'] == "获奖名单"
+      WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+                     :content => "请打开http://wanmei.meizu.com/cheers查看获奖名单，谢谢参与！")      
+    else                   
       if  wm.blank?      
         WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                      :content => WELCOME)

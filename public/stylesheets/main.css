@@ -53,9 +53,11 @@ a.graybtn:hover{color:#E0E0E0;}
 .btnbar_ap{width:485px;padding:42px 0px 54px 595px;margin:0px auto;}
 .btnbar_ap .normalbtn,.btnbar_ap .rule_ap{float:left;}
 .rule_ap{color:#FFFFFF;font-size:22px;margin-left:30px;line-height:78px;overflow:hidden;width:166px;}
+.rule_ap{line-height:40px;}
 a.rule_ap:link,a.rule_ap:hover{color:#FFFFFF;}
 .rule_ap em{float:left;color:#FFFFFF;}
 .linkicon_ap{display:inline-block;height:20px;width:20px;margin:30px 0px 0px 9px;background:url(/images/main_icon.png) no-repeat 0px -26px;_background-image:url(/images/main_icon.gif);}
+.linkicon_ap{margin:12px 0px 0px 9px;}
 /*myimperfect*/
 .container_myim,.container_myim #header{min-width:1152px;}
 .container_myim{width:auto;height:auto;background:url(/images/pg2.jpg) repeat;}
@@ -91,7 +93,7 @@ a.rule_ap:link,a.rule_ap:hover{color:#FFFFFF;}
 .contwarp_rule{background-color:#FFFFFF;width:1000px;margin:-91px auto 0px;color:#000000;font-size:18px;}
 .contwarp_rule h5,.contwarp_rule p{line-height:34px;}
 .head_rulecont{padding:27px 30px 22px;line-height:34px;}
-.head_rulecont a{color:#32A5E7;}
+.head_rulecont a, .prizeset a{color:#32A5E7;}
 .head_rulecont em{color:#ec321f;}
 .weibo_rule,.weixin_rule{border-top:1px solid #eaeaea;padding:30px 30px 0px;}
 .weibo_rule h3,.weixin_rule h3{font-size:30px;text-align:center;padding-bottom:23px;}

@@ -1,7 +1,7 @@
 Perfect::Admin.controllers :messages do
   get :index do
     @title = "Messages"
-    @messages = Message.order('id DESC').page(params[:page])
+    @messages = Message.where("generated_image is NOT NULL").order('id DESC').page(params[:page])
     render 'messages/index'
   end
 

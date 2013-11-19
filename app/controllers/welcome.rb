@@ -1,28 +1,7 @@
 Perfect::App.controllers :welcome do
   register Padrino::Rendering  
   register Padrino::Helpers  
-  
-#  use Rack::Protection::AuthenticityToken, :except => "weixin"
     
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
-
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   'Maps to url '/foo/#{params[:id]}''
-  # end
-
-  # get '/example' do
-  #   'Hello world!'
-  # end
-  
   get :index do
     @body_class = "container_index"
     render '/welcome/index'
@@ -103,6 +82,12 @@ Perfect::App.controllers :welcome do
   get :rules, :map => 'rules' do 
     @body_class = "container_rule"        
     render '/welcome/rules'
+  end  
+  
+  get :cheers, :map => 'cheers' do 
+    @body_class = "container_rule"        
+    @cheers = Cheer.order("id desc")
+    render '/welcome/cheers'
   end  
   
   get :weixin, :map => 'weixin' do 

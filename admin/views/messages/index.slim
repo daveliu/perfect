@@ -28,6 +28,7 @@ div class="tabs-content"
                       = submit_tag  pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       div class='btn btn-default btn-small cancel' = pat(:cancel)
         th class='header' = mat(:message, :id)
+        th class='header' = mat(:message, :uid)        
         th class='header' = mat(:message, :image)
         th class='header' = mat(:message, :generated_image)
         th class='header' = mat(:message, :name)
@@ -43,6 +44,7 @@ div class="tabs-content"
         tr class='list-row'
           td class='list-column list-selectable' = check_box_tag 'message_ids[]', :value => message.id, :class => 'list-selectable-checkbox'
           td class='list-column' = message.id
+          td class='list-column' = message.uid          
           td class='list-column' = image_tag message.image.url(:thumb)
           td class='list-column' = image_tag message.generated_image, :style => "width:300px;"
           td class='list-column' = message.name
@@ -62,3 +64,5 @@ div class="tabs-content"
                   - form_tag url(:messages, :destroy, :id => message.id), :method => :delete do
                     = submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
                     div class='btn btn-default btn-small cancel' = pat(:cancel)
+
+= (will_paginate @messages, :previous_label => '前一页', :next_label => '后一页').to_s.html_safe                    
