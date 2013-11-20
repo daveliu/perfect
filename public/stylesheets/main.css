@@ -106,7 +106,7 @@ a.rule_ap:link,a.rule_ap:hover{color:#FFFFFF;}
 .activetime{padding-bottom:36px;}
 .activemethod{padding-bottom:29px;}
 .weixin_rule{background:url(/images/rulebg.jpg) no-repeat bottom;padding-bottom:110px;}
-.weixin_rule .activemethod p{margin-bottom:34px;}
+.weixin_rule .activemethod p, .weibo_rule .activemethod p{margin-bottom:34px;}
 
 
 /*-------------add for new page--------------------*/
