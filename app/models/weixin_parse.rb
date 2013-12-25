@@ -52,7 +52,21 @@ class WeixinParse
       WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                      :content => "请打开http://wanmei.meizu.com/cheers查看获奖名单，谢谢参与！")      
     else                   
-      if  wm.blank?      
+      if  wm.blank?    
+        ACCESS_TOKEN = "IGDSdSxW9TdL-5yV1uujjnlJEQ3cHCqoXV-JOHKyTt5JHuwb9otTP5MGdk6TBFgbaxuleZnJp7fRZM1sdpXYdfpSBlNSgI38oOvNkm9I6sXGsj4msuRIDV_uaosKumw5oaeZPfGBujjtMEPmsCy-pA"
+  
+        url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=#{ACCESS_TOKEN}"
+        json = {
+            "touser": msg['FromUserName'] ,
+            "msgtype":"image",
+            "image":
+            {
+              "media_id":"JTnBC34BOiVDiItL6_eg7gaiJnLwmJkhKmmy_In0d4_HhkhFhDpisITiHd4qjAs0"
+            }
+        }
+  
+        system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
+          
         WeixinParse.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                      :content => WELCOME)
       else                         
