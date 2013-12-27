@@ -117,7 +117,7 @@ Perfect::App.controllers :welcome do
      logger.info("-------------------#{message}")
     
 #     begin
-       back_messages = WeixinParse.msg_router(message)     
+       back_messages = Weixin.msg_router(message)     
        logger.info "返回: #{back_messages}"     
        back_messages  
      # rescue Exception => e
@@ -125,7 +125,6 @@ Perfect::App.controllers :welcome do
      #   WeixinParse.text_msg(:from_user => message['ToUserName'], :to_user =>  message['FromUserName'], 
      #                      :content => "欢迎订阅，发送1开始进入不完美图片制作")        
    #  end
-     
-  end  
+    end  
 
 end

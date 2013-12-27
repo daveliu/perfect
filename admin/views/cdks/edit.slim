@@ -1,0 +1,8 @@
+ul class="nav nav-tabs"
+  li = link_to tag_icon(:list, pat(:list)), url(:cdks, :index)
+  li = link_to tag_icon(:plus, pat(:new)), url(:cdks, :new)
+  li class="active" = link_to tag_icon(:edit, pat(:edit)), url(:cdks, :edit, :id => @cdk.id)
+
+div class="tabs-content"
+  - form_for :cdk, url(:cdks, :update, :id => @cdk.id), :method => :put, :class => 'form-horizontal' do |f|
+    = partial 'cdks/form', :locals => { :f => f }

@@ -1,0 +1,37 @@
+- error = @question.errors.include?(:image)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :image, :class => 'control-label'
+  div class='controls'
+    = f.file_field :image, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    span class='help-inline' = error ? f.error_message_on(:image, :class => 'text-error') : pat(:example)
+- error = @question.errors.include?(:music)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :music, :class => 'control-label'
+  div class='controls'
+    = f.file_field :music, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:music, :class => 'text-error') : pat(:example)
+- error = @question.errors.include?(:options)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :options, :class => 'control-label'
+  div class='controls'
+    = f.text_area :options, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:options, :class => 'text-error') : pat(:example)
+- error = @question.errors.include?(:answer)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :answer, :class => 'control-label'
+  div class='controls'
+    = f.text_field :answer, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:answer, :class => 'text-error') : pat(:example)
+- error = @question.errors.include?(:media_id)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :media_id, :class => 'control-label'
+  div class='controls'
+    = f.text_field :media_id, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:media_id, :class => 'text-error') : pat(:example)
+
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary'
+  |&nbsp;
+  = f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  |&nbsp;
+  = link_to pat(:cancel), url(:questions, :index), :class => 'btn btn-default'

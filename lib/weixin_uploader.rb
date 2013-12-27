@@ -29,12 +29,12 @@ class WeixinUploader < CarrierWave::Uploader::Base
     "#{p[0,3]}/#{p[3,3]}/#{p[6,3]}"
   end
   
-  def default_url
-    "/images/" + [version_name, "perfect.png"].compact.join('_')
-  end
+  # def default_url
+  #   "/images/" + [version_name, "perfect.png"].compact.join('_')
+  # end
   
   version :thumb do
-    process :resize_to_fill => [300, 300]
+    process :resize_to_fill => [250, 250]
   end
   
   # def extension_white_list

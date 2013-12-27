@@ -19,4 +19,5 @@ gem 'capistrano'
 gem 'multi_xml'
 gem 'builder'
 gem "mime-types", "~> 1.19"
+gem "rest-client"
 #gem 'exception_notification'

@@ -1,0 +1,37 @@
+- error = @user.errors.include?(:over_today)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :over_today, :class => 'control-label'
+  div class='controls'
+    = f.check_box :over_today, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    span class='help-inline' = error ? f.error_message_on(:over_today, :class => 'text-error') : pat(:example)
+- error = @user.errors.include?(:right_answers_counter)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :right_answers_counter, :class => 'control-label'
+  div class='controls'
+    = f.text_field :right_answers_counter, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:right_answers_counter, :class => 'text-error') : pat(:example)
+- error = @user.errors.include?(:uid)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :uid, :class => 'control-label'
+  div class='controls'
+    = f.text_field :uid, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:uid, :class => 'text-error') : pat(:example)
+- error = @user.errors.include?(:right_answer_message_ids)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :right_answer_message_ids, :class => 'control-label'
+  div class='controls'
+    = f.text_field :right_answer_message_ids, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:right_answer_message_ids, :class => 'text-error') : pat(:example)
+- error = @user.errors.include?(:last_message_id)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :last_message_id, :class => 'control-label'
+  div class='controls'
+    = f.text_field :last_message_id, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:last_message_id, :class => 'text-error') : pat(:example)
+
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary'
+  |&nbsp;
+  = f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  |&nbsp;
+  = link_to pat(:cancel), url(:users, :index), :class => 'btn btn-default'

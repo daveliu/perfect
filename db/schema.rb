@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 13) do
+
+  create_table "access_tokens", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -21,6 +27,24 @@ ActiveRecord::Schema.define(:version => 7) do
     t.string   "role"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "answers", :force => true do |t|
+    t.string   "uid"
+    t.string   "content"
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.boolean  "result",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "cdks", :force => true do |t|
+    t.string   "uid"
+    t.string   "content"
+    t.datetime "send_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "cheers", :force => true do |t|
@@ -46,5 +70,27 @@ ActiveRecord::Schema.define(:version => 7) do
   end
 
   add_index "messages", ["token"], :name => "index_messages_on_token"
+
+  create_table "questions", :force => true do |t|
+    t.string   "image"
+    t.string   "music"
+    t.string   "options"
+    t.string   "answer"
+    t.string   "media_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.boolean  "over_today",            :default => false
+    t.integer  "right_answers_counter"
+    t.string   "uid"
+    t.string   "right_question_ids",    :default => ""
+    t.integer  "last_question_id"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  add_index "users", ["uid"], :name => "index_users_on_uid"
 
 end

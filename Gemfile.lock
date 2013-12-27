@@ -90,6 +90,8 @@ GEM
       rack
     rake (10.1.0)
     remotipart (1.2.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rvm-capistrano (1.5.1)
       capistrano (~> 2.15.4)
     sinatra (1.4.4)
@@ -132,6 +134,7 @@ DEPENDENCIES
   rack (~> 1.5.2)
   rake
   remotipart
+  rest-client
   rvm-capistrano
   slim
   unicode-display_width
