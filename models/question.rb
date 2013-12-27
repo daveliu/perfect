@@ -93,7 +93,7 @@ class Question < ActiveRecord::Base
     access_token = AccessToken.only
         
     if self.image?
-      asset_url = "#{Padrino.root}/public/" + self.image.url(:thumb)
+      asset_url = "#{Padrino.root}/public" + self.image.url(:thumb)
       type = "image"      
 
       response = RestClient.post("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=#{access_token}&type=#{type}", 
@@ -112,7 +112,11 @@ class Question < ActiveRecord::Base
       puts "-------------------#{response.inspect}"
       # self.media_id = JSON.parse(response)["media_id"]
       # self.save
-      self.update_column(:media_id, JSON.parse(response)["media_id"])
+      begin
+        self.update_column(:media_id, JSON.parse(response)["media_id"])
+      rescue Exception => e
+        self.errors.add(:base, JSON.parse(response)["errmsg"])   
+      end    
     end  
     
     #{"type":"image","media_id":"k-r28uPnT28FjUrtlSlctLL3yDMicbvDguEY-vt3_kIW0gqDXqD4TCI3UxR84UxJ","created_at":1387941716}%  
