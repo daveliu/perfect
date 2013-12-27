@@ -17,7 +17,11 @@ class Question < ActiveRecord::Base
   
   def self.ask_uid(uid)
     user  = User.where(:uid => uid).first    
-    m = Question.where(["id NOT IN (?)", user.right_question_array]).first
+    m = if user.right_question_array.blank?
+      Question.last
+    else  
+      Question.where(["id NOT IN (?)", user.right_question_array]).first
+    end
     
     m.ask_title(uid)
     m.ask_body(uid)
@@ -28,7 +32,7 @@ class Question < ActiveRecord::Base
   end
   
   def ask_title(uid, text = "")
-    user  = User.wehre(:uid => uid).first
+    user  = User.where(:uid => uid).first
     title = if self.image?
       "#{title} 第#{user.right_answers_counter + 1}题：请根据下面图片猜出相关内容。"
     else
@@ -58,7 +62,7 @@ class Question < ActiveRecord::Base
       "msgtype" => self.message_type,
       self.message_type =>
       {
-        "media_id" => self.uid
+        "media_id" => self.media_id
       }
     }.to_json 
 
@@ -72,7 +76,7 @@ class Question < ActiveRecord::Base
     json =     {
       "touser" => uid,
       "msgtype" => 'text',
-      self.message_type =>
+      'text' =>
       {
         "media_id" => self.options
       }
@@ -109,8 +113,12 @@ class Question < ActiveRecord::Base
       asset_url = "#{Padrino.root}/public/" + self.music.url
       type = "voice"
       
+      begin      
       RestClient.post("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=#{access_token}&type=#{type}", 
                       :media => File.new(asset_url, 'rb'))
+      rescue Exception => e
+        logger.info "-------------------#{e}"                        
+      end                        
     end
     
     if response.present?

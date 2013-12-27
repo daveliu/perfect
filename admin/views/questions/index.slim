@@ -40,7 +40,7 @@ div class="tabs-content"
         tr class='list-row'
           td class='list-column list-selectable' = check_box_tag 'question_ids[]', :value => question.id, :class => 'list-selectable-checkbox'
           td class='list-column' = question.id
-          td class='list-column' = image_tag(question.image) if question.image?
+          td class='list-column' = image_tag(question.image.url(:thumb)) if question.image?
           td class='list-column' = link_to("mp3", question.music.url) if question.music?
           td class='list-column' = simple_format(question.options)
           td class='list-column' = question.answer
