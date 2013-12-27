@@ -100,7 +100,7 @@ class Question < ActiveRecord::Base
        RestClient.post("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=#{access_token}&type=#{type}", 
                       :media => File.new(asset_url, 'rb'))
       rescue Exception => e
-        puts "-------------------#{e}"                        
+        logger.info "-------------------#{e}"                        
       end  
           
     elsif self.music?
