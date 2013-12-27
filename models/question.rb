@@ -1,5 +1,7 @@
 require 'carrierwave/orm/activerecord'
 require 'net/http'
+require 'rest_client'
+
 class Question < ActiveRecord::Base
   validates_presence_of :options
   validates_presence_of :answer
