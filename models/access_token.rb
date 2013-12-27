@@ -12,7 +12,8 @@ class AccessToken < ActiveRecord::Base
   end
   
   def self.only
-    if AccessToken.last.blank? ||  Time.now - AccessToken.last.created_at > 6500.seconds
+    last = AccessToken.last
+    if last.blank? ||  Time.now - last.created_at > 6500.seconds
       AccessToken.get!      
     end
     AccessToken.last.content            

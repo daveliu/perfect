@@ -92,19 +92,22 @@ class Question < ActiveRecord::Base
     
     access_token = AccessToken.only
         
-    if self.image?
+    response = if self.image?
       asset_url = "#{Padrino.root}/public" + self.image.url(:thumb)
       type = "image"      
-
-      response = RestClient.post("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=#{access_token}&type=#{type}", 
+      
+      begin
+       RestClient.post("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=#{access_token}&type=#{type}", 
                       :media => File.new(asset_url, 'rb'))
-
+      rescue Exception => e
+        puts "-------------------#{e}"                        
+      end  
           
     elsif self.music?
       asset_url = "#{Padrino.root}/public/" + self.music.url
       type = "voice"
       
-      response = RestClient.post("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=#{access_token}&type=#{type}", 
+      RestClient.post("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=#{access_token}&type=#{type}", 
                       :media => File.new(asset_url, 'rb'))
     end
     
