@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
     self.image? ?  "image" : "voice"
   end
   
-  def self.ask_uid(uid)
+  def self.ask_uid(uid, text =  "")
     user  = User.where(:uid => uid).first    
     m = if user.right_question_array.blank?
       Question.last
@@ -23,7 +23,7 @@ class Question < ActiveRecord::Base
       Question.where(["id NOT IN (?)", user.right_question_array]).first
     end
     
-    m.ask_title(uid)
+    m.ask_title(uid, text)
     m.ask_body(uid)
     m.ask_option(uid)  
     
