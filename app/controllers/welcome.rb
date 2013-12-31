@@ -116,15 +116,15 @@ Perfect::App.controllers :welcome do
      message = MultiXml.parse(body)['xml']
      logger.info("-------------------#{message}")
     
-    wm =  WeixinMessage.where(:message_id => message['MsgId']).first
-    if  wm.blank?
+    # wm =  WeixinMessage.where(:message_id => message['MsgId']).first
+    # if  wm.blank?
       WeixinMessage.create(:message_id => message['MsgId'])
       back_messages = Weixin.msg_router(message)     
       logger.info "返回: #{back_messages}"     
       back_messages  
-    else
-      return true  
-    end
+    # else
+    #   return true  
+    # end
 #     begin
 
      # rescue Exception => e

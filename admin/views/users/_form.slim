@@ -22,12 +22,12 @@ fieldset class='control-group#{error ? ' has-error' : ''}'
   div class='controls'
     = f.text_field :right_question_ids, :class => 'form-control input-large input-with-feedback'
     span class='help-inline' = error ? f.error_message_on(:right_question_ids, :class => 'text-error') : pat(:example)
-- error = @user.errors.include?(:last_question_id_id)
+- error = @user.errors.include?(:last_question_id)
 fieldset class='control-group#{error ? ' has-error' : ''}'
-  = f.label :last_question_id_id, :class => 'control-label'
+  = f.label :last_question_id, :class => 'control-label'
   div class='controls'
-    = f.text_field :last_question_id_id, :class => 'form-control input-large input-with-feedback'
-    span class='help-inline' = error ? f.error_message_on(:last_question_id_id, :class => 'text-error') : pat(:example)
+    = f.text_field :last_question_id, :class => 'form-control input-large input-with-feedback'
+    span class='help-inline' = error ? f.error_message_on(:last_question_id, :class => 'text-error') : pat(:example)
 
 div class="form-actions"
   = f.submit pat(:save), :class => 'btn btn-primary'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 14) do
+ActiveRecord::Schema.define(:version => 15) do
 
   create_table "access_tokens", :force => true do |t|
     t.string   "content"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 14) do
     t.integer  "last_question_id"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
+    t.datetime "overtime"
   end
 
   add_index "users", ["uid"], :name => "index_users_on_uid"

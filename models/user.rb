@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
      end    
   end
   
+  def over_today?
+    self.overtime.present? && self.overtime > Time.now.beginning_of_day
+  end
+  
   
   def answer_right!
     self.right_answers_counter += 1
@@ -20,7 +24,7 @@ class User < ActiveRecord::Base
     
     if self.right_answers_counter == 3
       self.right_answers_counter = 0
-      self.over_today = true
+      self.overtime = Time.now
     end  
     
     self.save
