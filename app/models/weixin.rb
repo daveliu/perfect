@@ -19,19 +19,21 @@ class Weixin
   def self.text_parse(msg)    
     uid = msg['FromUserName']
     user = User.find_or_create_by_uid(uid)
-    if msg['Content'] == "开始答题"
-      if user.over_today?
-        Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                       :content => "每日只能参加一次活动，请明天再来")
-      else
-        Question.ask_uid(uid)
-      end
+    if user.over_today?
+      return Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+                     :content => "每日只能参加一次活动，请明天再来")
+                     
+    end                 
+    
+    if msg['Content'] == "begin"
+      Question.ask_uid(uid)
     else                   
       if user.last_message.present?        
         if user.answer_right?(user.last_question)
           if user.over_today?                        
+            cdk = Cdk.send_to(uid)
             Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                          :content => "全部回答正确，恭喜你获得了今日的CDK ")                         
+                          :content => "全部回答正确，恭喜你获得了今日的CDK #{cdk.content}")                         
           else              
             Question.ask_uid(uid)                          
           end          
@@ -41,7 +43,7 @@ class Weixin
 
       else
         Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
-                       :content => "输入开始答题，立即参加赢奖活动")
+                       :content => "输入begin，立即参加赢奖活动")
       end    
     end  
   end

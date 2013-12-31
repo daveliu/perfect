@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   belongs_to :last_question, :class_name => "Question", :foreign_key => "last_question_id"
   
+  before_create :set_right_answers_counter
+  
   def answer_right?(msg)
      if msg['Content'].capitalize ==  self.last_question.answer
        self.answer_right!
@@ -31,6 +33,12 @@ class User < ActiveRecord::Base
   def clear_answers
     self.right_answers_counter = 0
     self.save    
+  end
+  
+  private
+  def set_right_answers_counter
+    self.right_answers_counter = 0    
+    
   end
 
 end

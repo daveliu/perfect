@@ -78,7 +78,7 @@ class Question < ActiveRecord::Base
       "msgtype" => 'text',
       'text' =>
       {
-        "media_id" => self.options
+        "content" => self.options
       }
     }.to_json       
     system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
