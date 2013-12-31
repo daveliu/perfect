@@ -34,9 +34,9 @@ class Question < ActiveRecord::Base
   def ask_title(uid, text = "")
     user  = User.where(:uid => uid).first
     title = if self.image?
-      "#{title} 第#{user.right_answers_counter + 1}题：请根据下面图片猜出相关内容。"
+      "#{text} 第#{user.right_answers_counter + 1}题：请根据下面图片猜出相关内容。"
     else
-      "#{title} 第#{user.right_answers_counter + 1}题：请听以下音乐片段猜测歌曲名称。"      
+      "#{text} 第#{user.right_answers_counter + 1}题：请听以下音乐片段猜测歌曲名称。"      
     end        
 
     access_token = AccessToken.only
@@ -50,7 +50,10 @@ class Question < ActiveRecord::Base
         "content" => title
       }
     }.to_json.gsub!(/\\u([0-9a-z]{4})/) {|s| [$1.to_i(16)].pack("U")}       
-    system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
+    
+    cmd = %Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) 
+    logger.info("--------------------------#{cmd}")
+    system(cmd)
   end
   
   def ask_body(uid)
@@ -64,9 +67,11 @@ class Question < ActiveRecord::Base
       {
         "media_id" => self.media_id
       }
-    }.to_json.gsub!(/\\u([0-9a-z]{4})/) {|s| [$1.to_i(16)].pack("U")} 
+    }.to_json
 
-    system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
+    cmd = %Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) 
+    logger.info("--------------------------#{cmd}")
+    system(cmd)
   end
   
   def ask_option(uid)
@@ -81,7 +86,10 @@ class Question < ActiveRecord::Base
         "content" => self.options
       }
     }.to_json.gsub!(/\\u([0-9a-z]{4})/) {|s| [$1.to_i(16)].pack("U")}       
-    system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
+
+    cmd = %Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) 
+    logger.info("--------------------------#{cmd}")
+    system(cmd)
   end
   
   private
