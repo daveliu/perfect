@@ -31,8 +31,8 @@ div class="tabs-content"
         th class='header' = mat(:user, :over_today)
         th class='header' = mat(:user, :right_answers_counter)
         th class='header' = mat(:user, :uid)
-        th class='header' = mat(:user, :right_answer_message_ids)
-        th class='header' = mat(:user, :last_message_id)
+        th class='header' = mat(:user, :right_question_ids)
+        th class='header' = mat(:user, :last_question_id_id)
         th class='header' = mat(:user, :created_at)
         th class='header' = mat(:user, :updated_at)
         th class='header list-row-action-header'
@@ -45,8 +45,8 @@ div class="tabs-content"
           td class='list-column' = user.over_today ? tag_icon(:ok) : tag_icon(:remove)
           td class='list-column' = user.right_answers_counter
           td class='list-column' = user.uid
-          td class='list-column' = user.right_answer_message_ids
-          td class='list-column' = user.last_message_id
+          td class='list-column' = user.right_question_ids
+          td class='list-column' = user.last_question_id_id
           td class='list-column' = time_ago_in_words user.created_at
           td class='list-column' = time_ago_in_words user.updated_at
           td class='list-column list-row-action'

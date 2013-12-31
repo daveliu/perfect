@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 13) do
+ActiveRecord::Schema.define(:version => 14) do
 
   create_table "access_tokens", :force => true do |t|
     t.string   "content"
@@ -92,5 +92,11 @@ ActiveRecord::Schema.define(:version => 13) do
   end
 
   add_index "users", ["uid"], :name => "index_users_on_uid"
+
+  create_table "weixin_messages", :force => true do |t|
+    t.string   "message_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

@@ -32,7 +32,7 @@ class Weixin
         if user.answer_right?(msg)
           if user.over_today?                        
             cdk = Cdk.send_to(uid)
-            Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+            return Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                           :content => "全部回答正确，恭喜你获得了今日的CDK #{cdk.content}")                         
           else              
             Question.ask_uid(uid)                          
@@ -42,7 +42,7 @@ class Weixin
         end    
 
       else
-        Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
+        return  Weixin.text_msg(:from_user => msg['ToUserName'], :to_user =>  msg['FromUserName'], 
                        :content => "输入begin，立即参加赢奖活动")
       end    
     end  

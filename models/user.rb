@@ -37,8 +37,7 @@ class User < ActiveRecord::Base
   
   private
   def set_right_answers_counter
-    self.right_answers_counter = 0    
-    
+    self.right_answers_counter = 0        
   end
 
 end
