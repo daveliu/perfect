@@ -49,7 +49,7 @@ class Question < ActiveRecord::Base
       {
         "content" => title
       }
-    }.to_json       
+    }.to_json.gsub!(/\\u([0-9a-z]{4})/) {|s| [$1.to_i(16)].pack("U")}       
     system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
   end
   
@@ -64,7 +64,7 @@ class Question < ActiveRecord::Base
       {
         "media_id" => self.media_id
       }
-    }.to_json 
+    }.to_json.gsub!(/\\u([0-9a-z]{4})/) {|s| [$1.to_i(16)].pack("U")} 
 
     system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
   end
@@ -80,7 +80,7 @@ class Question < ActiveRecord::Base
       {
         "content" => self.options
       }
-    }.to_json       
+    }.to_json.gsub!(/\\u([0-9a-z]{4})/) {|s| [$1.to_i(16)].pack("U")}       
     system(%Q(curl -X POST -H "Content-Type: application/json" -d '#{json}' #{url}) )
   end
   

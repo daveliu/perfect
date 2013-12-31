@@ -28,7 +28,7 @@ class Weixin
     if msg['Content'] == "begin"
       Question.ask_uid(uid)
     else                   
-      if user.last_message.present?        
+      if user.last_question.present?        
         if user.answer_right?(user.last_question)
           if user.over_today?                        
             cdk = Cdk.send_to(uid)
