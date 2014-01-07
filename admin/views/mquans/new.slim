@@ -1,0 +1,7 @@
+ul class="nav nav-tabs"
+  li = link_to tag_icon(:list, pat(:list)), url(:mquans, :index)
+  li class="active" = link_to tag_icon(:plus, pat(:new)), url(:mquans, :new)
+
+div class="tabs-content"
+  - form_for :mquan, url(:mquans, :create), :class => 'form-horizontal' do |f|
+    = partial 'mquans/form', :locals => { :f => f }

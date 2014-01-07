@@ -21,6 +21,7 @@ gem 'builder'
 gem "mime-types", "~> 1.19"
 gem "rest-client"
 gem 'whenever', :require => false
+gem "roo"
 #gem 'exception_notification'
 
 #webot send --token g3k1aab4  --des http://localhost:3000/weixin  t begin

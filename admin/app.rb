@@ -34,6 +34,7 @@ module Perfect
     end
 
     access_control.roles_for :admin do |role|
+    role.project_module :mquans, '/mquans'
     role.project_module :cdks, '/cdks'
     role.project_module :questions, '/questions'
     role.project_module :users, '/users'

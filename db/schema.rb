@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 15) do
+ActiveRecord::Schema.define(:version => 16) do
 
   create_table "access_tokens", :force => true do |t|
     t.string   "content"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(:version => 15) do
   end
 
   add_index "messages", ["token"], :name => "index_messages_on_token"
+
+  create_table "mquans", :force => true do |t|
+    t.string   "number"
+    t.string   "password"
+    t.datetime "send_at"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "questions", :force => true do |t|
     t.string   "image"
